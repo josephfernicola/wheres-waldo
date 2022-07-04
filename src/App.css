@@ -1,0 +1,346 @@
+body {
+  text-align: center;
+}
+nav > * {
+  text-decoration: none;
+  color: inherit;
+}
+
+nav {
+  border-bottom: 1px solid rgb(163, 158, 158);
+}
+
+.allLevels {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  padding: 0;
+}
+
+.beachSmall > img,
+.snowSmall > img,
+.spaceSmall > img,
+.trackSmall > img {
+  height: 16rem;
+  width: 20rem;
+  outline: 1px solid black;
+  transition: all 0.1s ease-in-out;
+}
+
+.beachSmall > img:hover,
+.snowSmall > img:hover,
+.spaceSmall > img:hover,
+.trackSmall > img:hover,
+.leaderboardBeach > img:hover,
+.leaderboardSnow > img:hover,
+.leaderboardSpace > img:hover,
+.leaderboardTrack > img:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.beachBig > img,
+.snowBig > img,
+.trackBig > img,
+.spaceBig > img {
+  width: 90rem;
+  overflow: scroll;
+}
+
+.nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  width: 100%;
+  justify-items: center;
+  position: fixed;
+  top: 0;
+  background-color: white;
+  z-index: 5;
+}
+.waldoImageAndName > img,
+.odlawImageAndName > img,
+.whitebeardImageAndName > img {
+  height: 5rem;
+  width: 5rem;
+}
+
+.characterContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 20rem;
+}
+
+.popup {
+  position: absolute;
+  color: white;
+  outline: solid 1px #ddd;
+  background-color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  width: 10%;
+  border-radius: 15px;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.waldoText,
+.odlawText,
+.whitebeardText {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.waldoText:hover,
+.odlawText:hover,
+.whitebeardText:hover {
+  background-color: rgb(34, 34, 34, 0.6);
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  pointer-events: none;
+  left: -100px;
+  top: 50%;
+  border: 2px solid black;
+  height: 50px;
+  width: 50px;
+  transition: all 300ms ease-out;
+}
+
+.correctNotification,
+.wrongNotification {
+  position: fixed;
+  left: 40rem;
+  top: 10rem;
+  width: 8rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 4;
+}
+.correctNotification {
+  color: rgb(25, 218, 25);
+  border: 2px solid rgb(25, 218, 25);
+  background-color: rgb(114, 110, 110);
+}
+
+.wrongNotification {
+  color: rgb(184, 5, 5);
+  border: 2px solid rgb(184, 5, 5);
+  background-color: rgb(151, 148, 148);
+}
+
+.greyOut {
+  filter: grayscale(100%);
+}
+.introText {
+  position: absolute;
+  top: 15rem;
+  left: 30rem;
+  z-index: 4;
+  font-weight: 600;
+  font-size: 2rem;
+}
+.startTimerButton {
+  position: absolute;
+  top: 20rem;
+  left: 41rem;
+  z-index: 4;
+}
+
+.winnerModal {
+  position: absolute;
+  top: 15rem;
+  left: 25rem;
+  z-index: 4;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.blur {
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+}
+
+.timer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  width: 13rem;
+}
+
+.returnHome,
+.startTimerButton,
+.submitScoreButton,
+.tryAgain {
+  border: none;
+  background-color: rgb(228, 53, 53);
+  height: 2rem;
+  width: 7rem;
+  border-radius: 10px;
+  outline: 1px solid rgb(14, 13, 13);
+  color: white;
+}
+.leaderboardButton {
+  border: none;
+  background-color: rgb(228, 53, 53);
+  height: 2rem;
+  width: 10rem;
+  border-radius: 10px;
+  outline: 1px solid rgb(14, 13, 13);
+  color: white;
+  margin-bottom: 2rem;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: rgb(248, 97, 97);
+}
+
+.winnerModal {
+  height: 15rem;
+}
+
+.winnerNameInput {
+  height: 20rem;
+}
+
+.winnerModal,
+.winnerNameInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.leaderboardDisplay {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  list-style-type: none;
+}
+
+.leaderboardBeach > img,
+.leaderboardSnow > img,
+.leaderboardSpace > img,
+.leaderboardTrack > img {
+  width: 18rem;
+  height: 15rem;
+  outline: 1px solid black;
+  transition: all 0.1s ease-in-out;
+}
+
+.boardTitles {
+  border: 1px solid black;
+  background-color: rgb(224, 212, 212);
+}
+
+.nameAndTime, .boardTitles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid rgb(94, 92, 92);
+  align-items: center;
+  height: 3rem;
+  width: 100%;
+  justify-items: start;
+  padding-left: 7rem;
+}
+
+.leaderboardNameTitle, .leaderboardTimeTitle {
+  font-weight: 700;
+}
+.leaderboardTimeTitle {
+  padding-left: 2rem;
+}
+.logoWhere {
+  color: rgb(51, 113, 247);
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.logoWaldo {
+  color: rgb(233, 75, 75);
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.leaderboardNav {
+  display: grid;
+  grid-template-columns: 1.3fr 2.3fr;
+  justify-items: start;
+  align-items: center;
+}
+
+.nameLogo {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  width: 25rem;
+}
+
+.returnHome {
+  margin-left: 5rem;
+}
+
+.logo {
+  height: 6rem;
+  width: 8rem;
+  padding-top: 1rem;
+}
+.homeNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shadow {
+  box-shadow: 0 0 30px #050505;
+}
+
+.hidden {
+  box-shadow: none;
+}
+
+.winnerTime {
+  display: flex;
+  justify-content: space-between;
+  width: 39rem;
+}
+
+.addBeachScore {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 30rem;
+  align-items: center;
+}
+
+.addBeachScore > input {
+  height: 1rem;
+  margin-right: 2rem;
+}
+
+input:focus {
+  outline: none;
+}
+
+.tryAgainAndLeaderboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 20rem;
+  align-items: center;
+}
+.tryAgainAndLeaderboard > a {
+  margin-top: 1.2rem;
+}
+
