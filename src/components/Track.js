@@ -149,7 +149,7 @@ function Track (props) {
           );
         } else if (waldoFound && odlawFound && !whitebeardFound) {
           setPopupText(
-            <div className="popup" style={{ ...popupX, ...popupY }}>
+            <div className="singlePopup" style={{ ...popupX, ...popupY }}>
               <div
                 onClick={switchValidateWhitebeard}
                 className="whitebeardText"
@@ -160,7 +160,7 @@ function Track (props) {
           );
         } else if (waldoFound && !odlawFound && whitebeardFound) {
           setPopupText(
-            <div className="popup" style={{ ...popupX, ...popupY }}>
+            <div className="singlePopup" style={{ ...popupX, ...popupY }}>
               <div onClick={switchValidateOdlaw} className="odlawText">
                 Odlaw
               </div>
@@ -168,7 +168,7 @@ function Track (props) {
           );
         } else if (!waldoFound && odlawFound && !whitebeardFound) {
           setPopupText(
-            <div className="popup" style={{ ...popupX, ...popupY }}>
+            <div className="singlePopup" style={{ ...popupX, ...popupY }}>
               <div onClick={switchValidateWaldo} className="waldoText">
                 Waldo
               </div>
@@ -182,7 +182,7 @@ function Track (props) {
           );
         } else if (!waldoFound && odlawFound && whitebeardFound) {
           setPopupText(
-            <div className="popup" style={{ ...popupX, ...popupY }}>
+            <div className="singlePopup" style={{ ...popupX, ...popupY }}>
               <div onClick={switchValidateWaldo} className="waldoText">
                 Waldo
               </div>

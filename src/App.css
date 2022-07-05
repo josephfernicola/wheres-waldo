@@ -94,6 +94,18 @@ nav {
   justify-content: space-between;
 }
 
+.singlePopup {
+  position: absolute;
+  color: white;
+  outline: solid 1px #ddd;
+  background-color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  width: 5rem;
+  border-radius: 15px;
+  height: 5rem;
+
+}
+
 .waldoText,
 .odlawText,
 .whitebeardText {

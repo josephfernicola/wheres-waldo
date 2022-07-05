@@ -63,7 +63,7 @@ function Beach(props) {
           );
         } else if (waldoFound && odlawFound && !whitebeardFound) {
           setPopupText(
-            <div className="popup" style={{ ...popupX, ...popupY }}>
+            <div className="singlePopup" style={{ ...popupX, ...popupY }}>
               <div
                 onClick={switchValidateWhitebeard}
                 className="whitebeardText"
@@ -74,7 +74,7 @@ function Beach(props) {
           );
         } else if (waldoFound && !odlawFound && whitebeardFound) {
           setPopupText(
-            <div className="popup" style={{ ...popupX, ...popupY }}>
+            <div className="singlePopup" style={{ ...popupX, ...popupY }}>
               <div onClick={switchValidateOdlaw} className="odlawText">
                 Odlaw
               </div>
@@ -96,7 +96,7 @@ function Beach(props) {
           );
         } else if (!waldoFound && odlawFound && whitebeardFound) {
           setPopupText(
-            <div className="popup" style={{ ...popupX, ...popupY }}>
+            <div className="singlePopup" style={{ ...popupX, ...popupY }}>
               <div onClick={switchValidateWaldo} className="waldoText">
                 Waldo
               </div>
@@ -153,9 +153,6 @@ function Beach(props) {
           document.querySelector(".waldoImageAndName").firstChild;
         waldoImg.className = "greyOut";
         setWaldoFound(true);
-        // const db = getFirestore();
-        // const docRef = doc(db, "beachCharacters", "waldo");
-        // setDoc(docRef, { waldo: true });
       } else {
         setNotificationText(
           <div className="wrongNotification">Try Again!</div>
@@ -179,9 +176,6 @@ function Beach(props) {
           document.querySelector(".odlawImageAndName").firstChild;
         odlawImg.className = "greyOut";
         setOdlawFound(true);
-        // const db = getFirestore();
-        // const docRef = doc(db, "beachCharacters", "odlaw");
-        // setDoc(docRef, { odlaw: true });
       } else {
         setNotificationText(
           <div className="wrongNotification">Try Again!</div>
@@ -206,9 +200,7 @@ function Beach(props) {
         ).firstChild;
         whitebeardImg.className = "greyOut";
         setWhitebeardFound(true);
-        // const db = getFirestore();
-        // const docRef = doc(db, "beachCharacters", "whitebeard");
-        // setDoc(docRef, { whitebeard: true });
+
       } else {
         setNotificationText(
           <div className="wrongNotification">Try Again!</div>
