@@ -237,6 +237,7 @@ function Beach(props) {
     //when all three are found
     if (odlawFound && waldoFound && whitebeardFound) {
       setTimerOn(false);
+      setAllowPopup(false);
       const beachPic = document.querySelector(".beachBig");
       beachPic.className = "beachBig blur";
       setWinnerModal(

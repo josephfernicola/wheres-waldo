@@ -234,6 +234,7 @@ function Space (props) {
     //when all three are found
     if (odlawFound && waldoFound && whitebeardFound) {
       setTimerOn(false);
+      setAllowPopup(false);
       const spacePic = document.querySelector(".spaceBig");
       spacePic.className = "spaceBig blur";
       setWinnerModal(

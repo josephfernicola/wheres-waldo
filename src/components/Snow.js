@@ -227,6 +227,7 @@ function Snow(props) {
     //when all three are found
     if (odlawFound && waldoFound && whitebeardFound) {
       setTimerOn(false);
+      setAllowPopup(false);
       const snowPic = document.querySelector(".snowBig");
       snowPic.className = "snowBig blur";
       setWinnerModal(

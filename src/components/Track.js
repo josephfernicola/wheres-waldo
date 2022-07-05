@@ -237,6 +237,7 @@ function Track (props) {
     //when all three are found
     if (odlawFound && waldoFound && whitebeardFound) {
       setTimerOn(false);
+      setAllowPopup(false);
       const spacePic = document.querySelector(".trackBig");
       spacePic.className = "trackBig blur";
       setWinnerModal(
