@@ -252,7 +252,7 @@ function Beach(props) {
           <div className="winnerNameInput">
             <form className="addBeachScore" onSubmit={addScore}>
               <label htmlFor="name"></label>
-              <input type="text" name="name" placeholder="Name"></input>
+              <input type="text" name="name" placeholder="Name" maxlength="30"></input>
               <button type="submit" className="submitScoreButton">
                 Add Score
               </button>
@@ -275,6 +275,7 @@ function Beach(props) {
     e.preventDefault();
     const allScores = getFirestore();
     const scoreRef = collection(allScores, "beachScores");
+    if (e.target.children[1].value.length > 0) {
     addDoc(scoreRef, {
       name: e.target.children[1].value,
       time:
@@ -286,6 +287,7 @@ function Beach(props) {
         "ms",
     });
     navigate("/leaderboards");
+  }
   };
   const refreshPage = () => {
     window.location.reload();

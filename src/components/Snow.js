@@ -231,26 +231,30 @@ function Snow(props) {
       snowPic.className = "snowBig blur";
       setWinnerModal(
         <div className="winnerModal">
-          <div>
-            You found all characters in
-            {("0" + Math.floor((time / 60000) % 60)).slice(-2)}m :
-            {("0" + Math.floor((time / 1000) % 60)).slice(-2)}s :
-            {("0" + ((time / 10) % 100)).slice(-2)}ms
+          <div className="winnerTime">
+            <span>You found all characters in</span>
+            <span>
+              {("0" + Math.floor((time / 60000) % 60)).slice(-2)}m :
+              {("0" + Math.floor((time / 1000) % 60)).slice(-2)}s :
+              {("0" + ((time / 10) % 100)).slice(-2)}ms
+            </span>
           </div>
-
           <div className="winnerNameInput">
-            <form className="addSnowScore" onSubmit={addScore}>
-              <label htmlFor="name">Name:</label>
-              <input type="text" name="name"></input>
-
-              <button type="submit">Add Score</button>
+            <form className="addBeachScore" onSubmit={addScore}>
+              <label htmlFor="name"></label>
+              <input type="text" name="name" placeholder="Name" maxlength="30"></input>
+              <button type="submit" className="submitScoreButton">
+                Add Score
+              </button>
             </form>
-            <button type="button" onClick={refreshPage}>
-              Try Again
-            </button>
-            <Link to="/leaderboards">
-              <button>View Leaderboards</button>
-            </Link>
+            <div className="tryAgainAndLeaderboard">
+              <button type="button" className="tryAgain" onClick={refreshPage}>
+                Try Again
+              </button>
+              <Link to="/leaderboards">
+                <button className="leaderboardButton">View Leaderboards</button>
+              </Link>
+            </div>
           </div>
         </div>
       );
@@ -261,6 +265,7 @@ function Snow(props) {
     e.preventDefault();
     const allScores = getFirestore();
     const scoreRef = collection(allScores, "snowScores");
+    if (e.target.children[1].value.length > 0) {
     addDoc(scoreRef, {
       name: e.target.children[1].value,
       time:
@@ -272,6 +277,7 @@ function Snow(props) {
         "ms",
     });
     navigate("/leaderboards");
+  }
   };
   const refreshPage = () => {
     window.location.reload();
