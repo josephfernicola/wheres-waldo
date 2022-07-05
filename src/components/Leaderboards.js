@@ -33,7 +33,7 @@ function Leaderboards() {
         .catch((err) => {
           console.log(err.message);
         });
-      {
+      
         currentDisplayScores.map((arr) => {
           return (
             <div key={arr.id}>
@@ -44,7 +44,7 @@ function Leaderboards() {
             </div>
           );
         });
-      }
+      
     } else if (snowScores) {
       const snowScoreRef = collection(allScores, "snowScores");
       getDocs(snowScoreRef)
@@ -58,7 +58,7 @@ function Leaderboards() {
         .catch((err) => {
           console.log(err.message);
         });
-      {
+      
         currentDisplayScores.map((arr) => {
           return (
             <div key={arr.id}>
@@ -69,7 +69,7 @@ function Leaderboards() {
             </div>
           );
         });
-      }
+      
     } else if (spaceScores) {
       const spaceScoreRef = collection(allScores, "spaceScores");
       getDocs(spaceScoreRef)
@@ -83,7 +83,7 @@ function Leaderboards() {
         .catch((err) => {
           console.log(err.message);
         });
-      {
+      
         currentDisplayScores.map((arr) => {
           return (
             <div key={arr.id}>
@@ -94,7 +94,7 @@ function Leaderboards() {
             </div>
           );
         });
-      }
+      
     } else if (trackScores) {
       const trackScoreRef = collection(allScores, "trackScores");
       getDocs(trackScoreRef)
@@ -108,7 +108,7 @@ function Leaderboards() {
         .catch((err) => {
           console.log(err.message);
         });
-      {
+      
         currentDisplayScores.map((arr) => {
           return (
             <div key={arr.id}>
@@ -119,9 +119,9 @@ function Leaderboards() {
             </div>
           );
         });
-      }
+      
     }
-  }, [beachScores, spaceScores, snowScores, trackScores]);
+  }, [beachScores, spaceScores, snowScores, trackScores, allScores, currentDisplayScores]);
 
   //alternate between true and false to change display page
   const changeBoardDisplayToBeach = (e) => {
@@ -175,8 +175,8 @@ function Leaderboards() {
 
   function sortScores(array) {
     return array.sort(function (a, b) {
-        if (a.time < b.time) return -1;
-        return 1
+      if (a.time < b.time) return -1;
+      return 1;
     });
   }
 

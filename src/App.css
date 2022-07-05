@@ -12,6 +12,11 @@ nav > * {
   color: inherit;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 nav {
   border-bottom: 1px solid rgb(163, 158, 158);
   background-color: white;
@@ -21,7 +26,7 @@ nav {
   list-style-type: none;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin-top: 5rem;
+  margin-top: 6rem;
   margin-bottom: 5rem;
   padding: 0;
 }
@@ -103,7 +108,6 @@ nav {
   width: 6rem;
   border-radius: 15px;
   height: 5rem;
-
 }
 
 .waldoText,
@@ -149,15 +153,17 @@ nav {
   z-index: 4;
 }
 .correctNotification {
-  color: rgb(25, 218, 25);
-  border: 2px solid rgb(25, 218, 25);
-  background-color: rgb(114, 110, 110);
+  color: rgb(65, 206, 60);
+  border: 2px solid rgb(65, 206, 60);
+  background-color: rgb(109, 109, 109);
+  font-weight: 700;
 }
 
 .wrongNotification {
-  color: rgb(184, 5, 5);
-  border: 2px solid rgb(184, 5, 5);
-  background-color: rgb(151, 148, 148);
+  color: rgb(204, 40, 40);
+  border: 2px solid rgb(204, 40, 40);
+  background-color: rgb(180, 175, 175);
+  font-weight: 700;
 }
 
 .greyOut {
@@ -314,9 +320,8 @@ button:hover {
 }
 
 .logo {
-  height: 6rem;
+  height: 7rem;
   width: 8rem;
-  padding-top: 1rem;
 }
 .homeNav {
   display: flex;
@@ -362,5 +367,17 @@ input:focus {
 }
 .tryAgainAndLeaderboard > a {
   margin-top: 1.2rem;
+}
+
+.homepageInstructions {
+  margin-top: 4rem;
+  font-size: 2rem;
+}
+
+
+.level {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
 }
 

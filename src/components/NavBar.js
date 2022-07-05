@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import waldo from "../images/waldoFace.png";
 import odlaw from "../images/odlawFace.png";
 import whitebeard from "../images/whitebeardFace.png";
-import logo from "../images/waldoHomeFace.jpeg";
+import logo from "../images/waldoHomeFace.png";
 
 function NavBar(props) {
   const { time, setTime, timerOn, setTimerOn } = props;
@@ -68,7 +68,7 @@ function NavBar(props) {
     ) {
       setNavText(setNavBar);
     }
-  }, [time]);
+  }, [time, location.pathname]);
 
   useEffect(() => {
     if (location.pathname === "/wheres-waldo") {

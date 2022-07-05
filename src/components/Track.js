@@ -33,8 +33,6 @@ function Track (props) {
 
   useEffect(() => {
     if (circleCoordinates.length === 2) {
-      console.log("left" , circleCoordinates[0].left);
-      console.log("top" , circleCoordinates[1].top)
       if (
         circleCoordinates[0].left < 424 &&
         circleCoordinates[0].left > 385 &&
@@ -58,8 +56,6 @@ function Track (props) {
 
   useEffect(() => {
     if (circleCoordinates.length === 2) {
-      console.log("left" , circleCoordinates[0].left);
-      console.log("top" , circleCoordinates[1].top)
       if (
         circleCoordinates[0].left < 885 &&
         circleCoordinates[0].left > 844 &&

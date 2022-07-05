@@ -4,7 +4,7 @@ import { useLocation, Link, useNavigate } from "react-router-dom";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 function Beach(props) {
-  const { time, setTime, timerOn, setTimerOn } = props;
+  const { time, setTimerOn } = props;
   const [popup, setPopup] = useState(true);
   const [popupText, setPopupText] = useState("");
   const [circle, setCircle] = useState("");
@@ -213,7 +213,7 @@ function Beach(props) {
     setTimeout(() => {
       setNotificationText("");
     }, 4000);
-  }, [validateWaldo, validateOdlaw, validateWhitebeard]);
+  }, [validateOdlaw, validateWaldo, validateWhitebeard]);
 
   const unBlurImage = (e) => {
     setTimerOn(true);
@@ -262,7 +262,7 @@ function Beach(props) {
         </div>
       );
     }
-  }, [odlawFound, waldoFound, whitebeardFound]);
+  }, [odlawFound, waldoFound, whitebeardFound, setTimerOn, time]);
 
   const addScore = (e) => {
     e.preventDefault();
