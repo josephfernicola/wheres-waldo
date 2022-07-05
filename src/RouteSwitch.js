@@ -8,7 +8,6 @@ import Space from './components/Space';
 import Track from './components/Track';
 import Leaderboards from './components/Leaderboards'
 
-
 const RouteSwitch = () => {
     const [time, setTime] = useState(0);
     const [timerOn, setTimerOn] = useState(false)
@@ -16,7 +15,7 @@ const RouteSwitch = () => {
     <BrowserRouter>
     <NavBar time={time} setTime={setTime} timerOn={timerOn} setTimerOn={setTimerOn}/>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/wheres-waldo" element={<App />} />
         <Route path="/beach" element={<Beach time={time} setTime={setTime} timerOn={timerOn} setTimerOn={setTimerOn}/>} />
         <Route path="/snow" element={<Snow time={time} setTime={setTime} timerOn={timerOn} setTimerOn={setTimerOn}/>} />
         <Route path="/space" element={<Space time={time} setTime={setTime} timerOn={timerOn} setTimerOn={setTimerOn}/>} />

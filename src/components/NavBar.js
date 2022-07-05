@@ -8,7 +8,15 @@ import logo from "../images/waldoHomeFace.jpeg";
 
 function NavBar(props) {
   const { time, setTime, timerOn, setTimerOn } = props;
-  const [navText, setNavText] = useState("Where's Waldo?");
+  const [navText, setNavText] = useState(
+    <nav className="homeNav">
+      <div className="nameLogo">
+        <img className="logo" src={logo} alt="Waldo Logo"></img>
+        <div className="logoWhere">Where's</div>
+        <div className="logoWaldo">Waldo?</div>
+      </div>
+    </nav>
+  );
   let location = useLocation();
   const clearTimer = () => {
     setTimerOn(false);
@@ -17,7 +25,7 @@ function NavBar(props) {
   const setNavBar = () => {
     return (
       <nav className="nav">
-        <Link to="/">
+        <Link to="/wheres-waldo">
           <button className="returnHome" onClick={clearTimer}>
             Return to Home
           </button>
@@ -63,12 +71,11 @@ function NavBar(props) {
   }, [time]);
 
   useEffect(() => {
-    if (location.pathname === "/") {
+    if (location.pathname === "/wheres-waldo") {
       setNavText(
         <nav className="homeNav">
-
           <div className="nameLogo">
-          <img className="logo" src={logo} alt="Waldo Logo"></img>
+            <img className="logo" src={logo} alt="Waldo Logo"></img>
             <div className="logoWhere">Where's</div>
             <div className="logoWaldo">Waldo?</div>
           </div>
@@ -85,16 +92,15 @@ function NavBar(props) {
     } else if (location.pathname === "/leaderboards") {
       setNavText(
         <nav className="leaderboardNav">
-          <Link to="/">
+          <Link to="/wheres-waldo">
             <button className="returnHome" onClick={clearTimer}>
               Return to Home
             </button>
           </Link>
           <div className="nameLogo">
-          <img className="logo" src={logo} alt="Waldo Logo"></img>
+            <img className="logo" src={logo} alt="Waldo Logo"></img>
             <div className="logoWhere">Where's</div>
             <div className="logoWaldo">Waldo</div>
-           
           </div>
         </nav>
       );
