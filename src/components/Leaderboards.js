@@ -175,18 +175,11 @@ function Leaderboards() {
 
   function sortScores(array) {
     return array.sort(function (a, b) {
-      return a - b;
+        if (a.time < b.time) return -1;
+        return 1
     });
   }
-  useEffect(() => {
-    //find out how to sort the array and return back to display
-    let timeArray = [];
-    currentDisplayScores.map((item) => {
-      timeArray.push(item.time);
-    });
-    //console.log("array" , timeArray)
-    //console.log("sorted" , sortScores(timeArray))
-  }, [currentDisplayScores]);
+
   return (
     <div>
       <ul className="leaderboardDisplay">
@@ -225,7 +218,7 @@ function Leaderboards() {
         <div className="leaderboardTimeTitle">Time</div>
       </div>
       <div className="leaderboardContainer">
-        {currentDisplayScores.map((arr) => {
+        {sortScores(currentDisplayScores).map((arr) => {
           return (
             <div key={arr.id} className="eachNameAndTime">
               <div className="nameAndTime">
