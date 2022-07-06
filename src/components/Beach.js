@@ -200,7 +200,6 @@ function Beach(props) {
         ).firstChild;
         whitebeardImg.className = "greyOut";
         setWhitebeardFound(true);
-
       } else {
         setNotificationText(
           <div className="wrongNotification">Try Again!</div>
@@ -218,11 +217,11 @@ function Beach(props) {
   const unBlurImage = (e) => {
     setTimerOn(true);
     setAllowPopup(true); //allows people to click image to make guesses
-    const beachImg = e.target.parentElement.lastChild;
+    const beachImg = e.target.parentElement.parentElement.lastChild;
     beachImg.className = "beachBig"; //removed the blur
     const introText = e.target.parentElement.firstChild;
     introText.remove();
-    e.target.remove();
+    e.target.parentElement.remove();
   };
 
   useEffect(() => {
@@ -245,7 +244,12 @@ function Beach(props) {
           <div className="winnerNameInput">
             <form className="addBeachScore" onSubmit={addScore}>
               <label htmlFor="name"></label>
-              <input type="text" name="name" placeholder="Name" maxlength="30"></input>
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                maxLength="30"
+              ></input>
               <button type="submit" className="submitScoreButton">
                 Add Score
               </button>
@@ -269,28 +273,30 @@ function Beach(props) {
     const allScores = getFirestore();
     const scoreRef = collection(allScores, "beachScores");
     if (e.target.children[1].value.length > 0) {
-    addDoc(scoreRef, {
-      name: e.target.children[1].value,
-      time:
-        ("0" + Math.floor((time / 60000) % 60)).slice(-2) +
-        "m : " +
-        ("0" + Math.floor((time / 1000) % 60)).slice(-2) +
-        "s : " +
-        ("0" + ((time / 10) % 100)).slice(-2) +
-        "ms",
-    });
-    navigate("/leaderboards");
-  }
+      addDoc(scoreRef, {
+        name: e.target.children[1].value,
+        time:
+          ("0" + Math.floor((time / 60000) % 60)).slice(-2) +
+          "m : " +
+          ("0" + Math.floor((time / 1000) % 60)).slice(-2) +
+          "s : " +
+          ("0" + ((time / 10) % 100)).slice(-2) +
+          "ms",
+      });
+      navigate("/leaderboards");
+    }
   };
   const refreshPage = () => {
     window.location.reload();
   };
   return (
-    <div>
-      <div className="introText">Find Waldo, Odlaw and Whitebeard!</div>
-      <button className="startTimerButton" onClick={unBlurImage}>
-        Start!
-      </button>
+    <div className="beachContainer">
+      <div className="introAndButton">
+        <div className="introText">Find Waldo, Odlaw and Whitebeard!</div>
+        <button className="startTimerButton" onClick={unBlurImage}>
+          Start!
+        </button>
+      </div>
       <div>{winnerModal}</div>
       <div className={"beachBig blur"} onClick={popUpScreen}>
         {popupText}
