@@ -25,7 +25,7 @@ nav {
 .allLevels {
   list-style-type: none;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   margin-top: 6rem;
   margin-bottom: 5rem;
   padding: 0;
@@ -380,4 +380,75 @@ input:focus {
   font-size: 1.5rem;
   margin-top: 0.5rem;
 }
+
+
+@media (max-width: 1200px) {
+  .leaderboardBeach > img, .leaderboardSnow > img, .leaderboardSpace > img, .leaderboardTrack > img
+ {
+  height: 10rem;
+  width: 10rem;
+ }
+}
+
+@media (max-width: 900px) {
+  .spaceSmall > img, .beachSmall > img, .snowSmall > img, .trackSmall > img {
+    height: 15rem;
+    width: 15rem;
+  }
+  .level {
+    font-size: 1rem;
+  }
+  .logo {
+    height: 4rem;
+    width: 4rem;
+  }
+  .logoWaldo, .logoWhere {
+    font-size: 2.5rem;
+  }
+
+  .returnHome {
+    height: 2rem;
+    width: 5rem;
+    font-size: 0.6rem;
+    margin-left: 0.5rem;
+  }
+  .nameLogo {
+    width: 15rem;
+  }
+.leaderboardBeach > img, .leaderboardSnow > img, .leaderboardSpace > img, .leaderboardTrack > img
+ {
+  height: 6rem;
+  width: 6rem;
+ }
+ .leaderboardDisplay {
+   padding-left: 0;
+ }
+
+ .introText {
+   font-size: 1.5rem;
+  left: 5rem;
+ }
+ .startTimerButton {
+   left: 15rem;
+ }
+
+ .beachBig > img, .snowBig > img, .spaceBig > img, .trackBig  > img {
+   height: 40rem;
+   width: 47rem;
+ }
+
+ .waldoImageAndName > img, .odlawImageAndName > img, .whitebeardImageAndName > img {
+    height: 3rem;
+    width: 3rem;
+ }
+
+ .characterContainer {
+  justify-content: space-around;
+  width: 15rem;
+ }
+ .timer {
+   width: 8rem;
+ }
+}
+
 
