@@ -1,5 +1,5 @@
 * {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
 body {
@@ -28,6 +28,14 @@ nav {
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   margin-top: 6rem;
   margin-bottom: 5rem;
+  padding: 0;
+}
+
+.hidden {
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
+  margin: 0;
   padding: 0;
 }
 
@@ -62,10 +70,11 @@ nav {
 }
 
 .nav {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   align-items: center;
   width: 100%;
-  justify-content: space-around;
+  justify-items: center;
   position: fixed;
   top: 0;
   background-color: white;
@@ -196,17 +205,16 @@ left: 31rem;
 } */
 
 .winnerModal {
-
   z-index: 4;
   font-weight: 600;
   font-size: 2rem;
   position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
-    margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
 }
 
 .blur {
@@ -232,7 +240,6 @@ left: 31rem;
   border-radius: 10px;
   border: 1px solid rgb(14, 13, 13);
   color: white;
-
 }
 .leaderboardButton {
   border: none;
@@ -256,7 +263,7 @@ button:hover {
 .fitScreen {
   overflow: hidden;
   height: 45rem;
-  }
+}
 
 .winnerNameInput {
   height: 20rem;
@@ -291,7 +298,8 @@ button:hover {
   background-color: rgb(160, 152, 152);
 }
 
-.nameAndTime, .boardTitles {
+.nameAndTime,
+.boardTitles {
   display: grid;
   grid-template-columns: 1fr 1fr;
   border-bottom: 1px solid rgb(94, 92, 92);
@@ -302,7 +310,8 @@ button:hover {
   padding-left: 7rem;
 }
 
-.leaderboardNameTitle, .leaderboardTimeTitle {
+.leaderboardNameTitle,
+.leaderboardTimeTitle {
   font-weight: 700;
 }
 .leaderboardTimeTitle {
@@ -364,14 +373,19 @@ button:hover {
   width: 42rem;
 }
 
-.addBeachScore, .addSnowScore, .addSpaceScore {
+.addBeachScore,
+.addSnowScore,
+.addSpaceScore {
   display: grid;
   grid-template-columns: 1fr 1fr 2fr;
   width: 30rem;
   align-items: center;
 }
 
-.addBeachScore > input, .addSnowScore > input, .addSpaceScore > input, .addTrackScore > input    {
+.addBeachScore > input,
+.addSnowScore > input,
+.addSpaceScore > input,
+.addTrackScore > input {
   height: 1rem;
   margin-right: 2rem;
 }
@@ -395,24 +409,27 @@ input:focus {
   font-size: 2rem;
 }
 
-
 .level {
   font-weight: 700;
   font-size: 1.5rem;
   margin-top: 0.5rem;
 }
 
-
 @media (max-width: 1200px) {
-  .leaderboardBeach > img, .leaderboardSnow > img, .leaderboardSpace > img, .leaderboardTrack > img
- {
-  height: 10rem;
-  width: 10rem;
- }
+  .leaderboardBeach > img,
+  .leaderboardSnow > img,
+  .leaderboardSpace > img,
+  .leaderboardTrack > img {
+    height: 10rem;
+    width: 10rem;
+  }
 }
 
 @media (max-width: 900px) {
-  .spaceSmall > img, .beachSmall > img, .snowSmall > img, .trackSmall > img {
+  .spaceSmall > img,
+  .beachSmall > img,
+  .snowSmall > img,
+  .trackSmall > img {
     height: 15rem;
     width: 21rem;
   }
@@ -425,22 +442,24 @@ input:focus {
     height: 4rem;
     width: 4rem;
   }
-  .logoWaldo, .logoWhere {
+  .logoWaldo,
+  .logoWhere {
     font-size: 1.7rem;
   }
-.leaderboardNav > .nameLogo > .logoWhere, .leaderboardNav > .nameLogo > .logoWaldo {
-  font-size: 1.1rem;
-}
-.leaderboardNav{
-  grid-template-columns: 1fr 2.5fr;
-}
+  .leaderboardNav > .nameLogo > .logoWhere,
+  .leaderboardNav > .nameLogo > .logoWaldo {
+    font-size: 1.1rem;
+  }
+  .leaderboardNav {
+    grid-template-columns: 1fr 2.5fr;
+  }
 
-.leaderboardNav > .nameLogo {
-  column-gap: 0;
-  width: 13rem;
-}
+  .leaderboardNav > .nameLogo {
+    column-gap: 0;
+    width: 13rem;
+  }
 
-.startTimerButton {
+  .startTimerButton {
     height: 1.5rem;
     width: 3.5rem;
     font-size: 0.6rem;
@@ -454,72 +473,66 @@ input:focus {
   .nameLogo {
     width: 15rem;
   }
-.leaderboardBeach > img, .leaderboardSnow > img, .leaderboardSpace > img, .leaderboardTrack > img
- {
-  height: 6rem;
-  width: 6rem;
- }
- .leaderboardDisplay {
-   padding-left: 0;
- }
+  .leaderboardBeach > img,
+  .leaderboardSnow > img,
+  .leaderboardSpace > img,
+  .leaderboardTrack > img {
+    height: 6rem;
+    width: 6rem;
+  }
+  .leaderboardDisplay {
+    padding-left: 0;
+  }
 
- .waldoImageAndName > img, .odlawImageAndName > img, .whitebeardImageAndName > img {
+  .waldoImageAndName > img,
+  .odlawImageAndName > img,
+  .whitebeardImageAndName > img {
     height: 2rem;
     width: 2rem;
- }
+  }
 
- .characterContainer {
-  justify-content: space-around;
-  width: 10rem;
- }
- .timer {
-   width: 5rem;
-   font-size: 0.7rem;
- }
- .waldoImageAndName > div, .odlawImageAndName > div, .whitebeardImageAndName > div {
-font-size: 0.7rem;
- }
-/* 
- .correctNotification,
-.wrongNotification {
-  width: 5rem;
-  height: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 4;
-} */
-.introAndButton{
-  margin-top: 4rem;
-  height: 4rem;
-}
-.winnerTime > span {
-  font-size: 1rem;
+  .characterContainer {
+    justify-content: space-around;
+    width: 10rem;
+  }
+  .timer {
+    width: 5rem;
+    font-size: 0.7rem;
+  }
+  .waldoImageAndName > div,
+  .odlawImageAndName > div,
+  .whitebeardImageAndName > div {
+    font-size: 0.7rem;
+  }
 
-}
+  .introAndButton {
+    margin-top: 4rem;
+    height: 4rem;
+  }
+  .winnerTime > span {
+    font-size: 1rem;
+  }
 
-.winnerTime {
-  width: 21rem;
-  margin-bottom: 0.8rem;
+  .winnerTime {
+    width: 21rem;
+    margin-bottom: 0.8rem;
+  }
+  .winnerModal {
+    height: 14rem;
+    margin-top: 10rem;
+  }
+  .popup {
+    font-size: 0.7rem;
+    width: 5rem;
+  }
+  .boardTitles {
+    padding-left: 1rem;
+  }
+  .nameAndTime {
+    padding-left: 1rem;
+  }
+  .leaderboardDisplay {
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 0;
+  }
 }
-.winnerModal {
-height: 14rem;
-margin-top: 10rem;
-}
-.popup {
-  font-size: 0.7rem;
-  width: 5rem;
-}
-.boardTitles {
-  padding-left: 1rem;
-}
-.nameAndTime {
-  padding-left: 1rem;
-}
-.leaderboardDisplay {
-  grid-template-columns: 1fr 1fr;
-  margin-bottom: 0;
-}
-}
-
-

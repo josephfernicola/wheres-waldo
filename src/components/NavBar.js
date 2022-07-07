@@ -18,45 +18,59 @@ function NavBar(props) {
     </nav>
   );
   let location = useLocation();
-  const clearTimer = () => {
+
+  const clearTimerAndResetColumns = () => {
     setTimerOn(false);
     setTime(0);
+    const nav = document.querySelector(".nav");
+    nav.style.gridTemplateColumns = "1fr 1fr 1fr 1fr";
+    // const startTimer = document.querySelector(".startTimerButton");
+    // startTimer.className = "startTimerButton"
   };
   const unBlurImage = (e) => {
     if (location.pathname === "/beach") {
     setTimerOn(true);
     setAllowPopup(true); //allows people to click image to make guesses
-    const beachImg = document.querySelector(".beachContainer").children[1]
-    beachImg.className = "beachBig"; //removed the blur
-    e.target.remove();
+    const beachImg = document.querySelector(".beachContainer");
+    beachImg.children[1].className = "beachBig"; //removed the blur
+      const nav = document.querySelector(".nav");
+      nav.style.gridTemplateColumns = "1fr 1fr .000001fr 1fr"
+    e.target.className="hidden"
+    
     }
     else if (location.pathname === "/snow") {
       setTimerOn(true);
       setAllowPopup(true); //allows people to click image to make guesses
       const snowImg = document.querySelector(".snowContainer").children[1]
       snowImg.className = "snowBig"; //removed the blur
-      e.target.remove();
+      const nav = document.querySelector(".nav");
+      nav.style.gridTemplateColumns = "1fr 1fr .000001fr 1fr"
+      e.target.className="hidden";
       }
       else if (location.pathname === "/track") {
         setTimerOn(true);
         setAllowPopup(true); //allows people to click image to make guesses
         const trackImg = document.querySelector(".trackContainer").children[1]
         trackImg.className = "trackBig"; //removed the blur
-        e.target.remove();
+        const nav = document.querySelector(".nav");
+        nav.style.gridTemplateColumns = "1fr 1fr .000001fr 1fr"
+        e.target.className="hidden";
         }
         else if (location.pathname === "/space") {
           setTimerOn(true);
           setAllowPopup(true); //allows people to click image to make guesses
           const spaceImg = document.querySelector(".spaceContainer").children[1]
           spaceImg.className = "spaceBig"; //removed the blur
-          e.target.remove();
+          const nav = document.querySelector(".nav");
+          nav.style.gridTemplateColumns = "1fr 1fr .000001fr 1fr"
+          e.target.className="hidden";
           }
   };
   const setNavBar = () => {
     return (
       <nav className="nav">
         <Link to="/wheres-waldo">
-          <button className="returnHome" onClick={clearTimer}>
+          <button className="returnHome" onClick={clearTimerAndResetColumns}>
             Return to Home
           </button>
         </Link>
@@ -126,7 +140,7 @@ function NavBar(props) {
       setNavText(
         <nav className="leaderboardNav">
           <Link to="/wheres-waldo">
-            <button className="returnHome" onClick={clearTimer}>
+            <button className="returnHome" onClick={clearTimerAndResetColumns}>
               Return to Home
             </button>
           </Link>
