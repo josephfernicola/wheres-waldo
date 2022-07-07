@@ -8,7 +8,7 @@ import {
 } from "firebase/firestore";
 
 function Track (props) {
-  const { time, setTime, timerOn, setTimerOn } = props;
+  const { time, setTime, timerOn, setTimerOn, allowPopup, setAllowPopup } = props;
   const [popup, setPopup] = useState(true);
   const [popupText, setPopupText] = useState("");
   const [circle, setCircle] = useState("");
@@ -17,7 +17,6 @@ function Track (props) {
   const [validateOdlaw, setValidateOdlaw] = useState(false);
   const [validateWhitebeard, setValidateWhitebeard] = useState(false);
   const [notificationText, setNotificationText] = useState("");
-  const [allowPopup, setAllowPopup] = useState(false);
   const [waldoFound, setWaldoFound] = useState(false);
   const [odlawFound, setOdlawFound] = useState(false);
   const [whitebeardFound, setWhitebeardFound] = useState(false);
@@ -220,22 +219,13 @@ function Track (props) {
     setValidateWhitebeard((prevValue) => !prevValue);
   };
 
-  const unBlurImage = (e) => {
-    setTimerOn(true);
-    setAllowPopup(true); //allows people to click image to make guesses
-    const trackImg = e.target.parentElement.lastChild;
-    trackImg.className = "trackBig"; //removed the blur
-    const introText = e.target.parentElement.firstChild;
-    introText.remove();
-    e.target.remove();
-  };
   useEffect(() => {
     //when all three are found
     if (odlawFound && waldoFound && whitebeardFound) {
       setTimerOn(false);
       setAllowPopup(false);
       const spacePic = document.querySelector(".trackBig");
-      spacePic.className = "trackBig blur";
+      spacePic.className = "trackBig blur fitScreen";
       setWinnerModal(
         <div className="winnerModal">
           <div className="winnerTime">
@@ -247,7 +237,7 @@ function Track (props) {
             </span>
           </div>
           <div className="winnerNameInput">
-            <form className="addBeachScore" onSubmit={addScore}>
+            <form className="addTrackScore" onSubmit={addScore}>
               <label htmlFor="name"></label>
               <input type="text" name="name" placeholder="Name" maxlength="30"></input>
               <button type="submit" className="submitScoreButton">
@@ -290,19 +280,14 @@ function Track (props) {
     window.location.reload();
   };
   return (
-    <div>
-      <div className="introText">Find Waldo, Odlaw and Whitebeard!</div>
-      <button className="startTimerButton" onClick={unBlurImage}>
-        Start!
-      </button>
-      <div>{winnerModal}</div>
-      <div className={"trackBig blur"} onClick={popUpScreen}>
-        {popupText}
-        {circle}
-        <img src={track} alt="Space"></img>
-        <div className="notificationText">{notificationText}</div>
-      </div>
+    <div className="trackContainer">
+    <div>{winnerModal}</div>
+    <div className={"trackBig blur"} onClick={popUpScreen}>
+      {popupText}
+      {circle}
+      <img src={track} alt="Track"></img>
     </div>
+  </div>
   );
 }
 export default Track;

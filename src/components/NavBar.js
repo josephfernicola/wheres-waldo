@@ -7,7 +7,7 @@ import whitebeard from "../images/whitebeardFace.png";
 import logo from "../images/waldoHomeFace.png";
 
 function NavBar(props) {
-  const { time, setTime, timerOn, setTimerOn } = props;
+  const { time, setTime, timerOn, setTimerOn, allowPopup, setAllowPopup } = props;
   const [navText, setNavText] = useState(
     <nav className="homeNav">
       <div className="nameLogo">
@@ -21,6 +21,36 @@ function NavBar(props) {
   const clearTimer = () => {
     setTimerOn(false);
     setTime(0);
+  };
+  const unBlurImage = (e) => {
+    if (location.pathname === "/beach") {
+    setTimerOn(true);
+    setAllowPopup(true); //allows people to click image to make guesses
+    const beachImg = document.querySelector(".beachContainer").children[1]
+    beachImg.className = "beachBig"; //removed the blur
+    e.target.remove();
+    }
+    else if (location.pathname === "/snow") {
+      setTimerOn(true);
+      setAllowPopup(true); //allows people to click image to make guesses
+      const snowImg = document.querySelector(".snowContainer").children[1]
+      snowImg.className = "snowBig"; //removed the blur
+      e.target.remove();
+      }
+      else if (location.pathname === "/track") {
+        setTimerOn(true);
+        setAllowPopup(true); //allows people to click image to make guesses
+        const trackImg = document.querySelector(".trackContainer").children[1]
+        trackImg.className = "trackBig"; //removed the blur
+        e.target.remove();
+        }
+        else if (location.pathname === "/space") {
+          setTimerOn(true);
+          setAllowPopup(true); //allows people to click image to make guesses
+          const spaceImg = document.querySelector(".spaceContainer").children[1]
+          spaceImg.className = "spaceBig"; //removed the blur
+          e.target.remove();
+          }
   };
   const setNavBar = () => {
     return (
@@ -45,6 +75,9 @@ function NavBar(props) {
             <div>Whitebeard</div>
           </div>
         </div>
+        <button className="startTimerButton" onClick={unBlurImage}>
+          Start!
+        </button>
         <div className="timer">
           <div className="minutes">
             {("0" + Math.floor((time / 60000) % 60)).slice(-2)}m

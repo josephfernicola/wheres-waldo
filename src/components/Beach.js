@@ -4,7 +4,7 @@ import { useLocation, Link, useNavigate } from "react-router-dom";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 function Beach(props) {
-  const { time, setTimerOn } = props;
+  const { time, setTimerOn, allowPopup, setAllowPopup } = props;
   const [popup, setPopup] = useState(true);
   const [popupText, setPopupText] = useState("");
   const [circle, setCircle] = useState("");
@@ -13,7 +13,6 @@ function Beach(props) {
   const [validateOdlaw, setValidateOdlaw] = useState(false);
   const [validateWhitebeard, setValidateWhitebeard] = useState(false);
   const [notificationText, setNotificationText] = useState("");
-  const [allowPopup, setAllowPopup] = useState(false);
   const [waldoFound, setWaldoFound] = useState(false);
   const [odlawFound, setOdlawFound] = useState(false);
   const [whitebeardFound, setWhitebeardFound] = useState(false);
@@ -146,18 +145,13 @@ function Beach(props) {
         circleCoordinates[1].top < 371 &&
         circleCoordinates[1].top > 326
       ) {
-        setNotificationText(
-          <div className="correctNotification">Found Waldo!</div>
-        );
+       
         const waldoImg =
           document.querySelector(".waldoImageAndName").firstChild;
         waldoImg.className = "greyOut";
         setWaldoFound(true);
-      } else {
-        setNotificationText(
-          <div className="wrongNotification">Try Again!</div>
-        );
-      }
+      } 
+      
     }
   }, [validateWaldo]);
 
@@ -169,17 +163,10 @@ function Beach(props) {
         circleCoordinates[1].top < 351 &&
         circleCoordinates[1].top > 307
       ) {
-        setNotificationText(
-          <div className="correctNotification">Found Odlaw!</div>
-        );
         const odlawImg =
           document.querySelector(".odlawImageAndName").firstChild;
         odlawImg.className = "greyOut";
         setOdlawFound(true);
-      } else {
-        setNotificationText(
-          <div className="wrongNotification">Try Again!</div>
-        );
       }
     }
   }, [validateOdlaw]);
@@ -192,37 +179,14 @@ function Beach(props) {
         circleCoordinates[1].top < 351 &&
         circleCoordinates[1].top > 310
       ) {
-        setNotificationText(
-          <div className="correctNotification">Found Whitebeard!</div>
-        );
         const whitebeardImg = document.querySelector(
           ".whitebeardImageAndName"
         ).firstChild;
         whitebeardImg.className = "greyOut";
         setWhitebeardFound(true);
-      } else {
-        setNotificationText(
-          <div className="wrongNotification">Try Again!</div>
-        );
-      }
+      } 
     }
   }, [validateWhitebeard]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setNotificationText("");
-    }, 4000);
-  }, [validateOdlaw, validateWaldo, validateWhitebeard]);
-
-  const unBlurImage = (e) => {
-    setTimerOn(true);
-    setAllowPopup(true); //allows people to click image to make guesses
-    const beachImg = e.target.parentElement.parentElement.lastChild;
-    beachImg.className = "beachBig"; //removed the blur
-    const introText = e.target.parentElement.firstChild;
-    introText.remove();
-    e.target.parentElement.remove();
-  };
 
   useEffect(() => {
     //when all three are found
@@ -230,7 +194,7 @@ function Beach(props) {
       setTimerOn(false);
       setAllowPopup(false);
       const beachPic = document.querySelector(".beachBig");
-      beachPic.className = "beachBig blur";
+      beachPic.className = "beachBig blur fitScreen";
       setWinnerModal(
         <div className="winnerModal">
           <div className="winnerTime">
@@ -291,18 +255,11 @@ function Beach(props) {
   };
   return (
     <div className="beachContainer">
-      <div className="introAndButton">
-        <div className="introText">Find Waldo, Odlaw and Whitebeard!</div>
-        <button className="startTimerButton" onClick={unBlurImage}>
-          Start!
-        </button>
-      </div>
       <div>{winnerModal}</div>
       <div className={"beachBig blur"} onClick={popUpScreen}>
         {popupText}
         {circle}
         <img src={beach} alt="Beach"></img>
-        <div className="notificationText">{notificationText}</div>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import { useLocation, Link, useNavigate } from "react-router-dom";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 function Snow(props) {
-  const { time, setTime, timerOn, setTimerOn } = props;
+  const { time, setTime, timerOn, setTimerOn, allowPopup, setAllowPopup } = props;
   const [popup, setPopup] = useState(true);
   const [popupText, setPopupText] = useState("");
   const [circle, setCircle] = useState("");
@@ -13,7 +13,6 @@ function Snow(props) {
   const [validateOdlaw, setValidateOdlaw] = useState(false);
   const [validateWhitebeard, setValidateWhitebeard] = useState(false);
   const [notificationText, setNotificationText] = useState("");
-  const [allowPopup, setAllowPopup] = useState(false);
   const [waldoFound, setWaldoFound] = useState(false);
   const [odlawFound, setOdlawFound] = useState(false);
   const [whitebeardFound, setWhitebeardFound] = useState(false);
@@ -213,23 +212,13 @@ function Snow(props) {
     //switch between true and false to check for character on every click
     setValidateWhitebeard((prevValue) => !prevValue);
   };
-
-  const unBlurImage = (e) => {
-    setTimerOn(true);
-    setAllowPopup(true); //allows people to click image to make guesses
-    const snowImg = e.target.parentElement.lastChild;
-    snowImg.className = "snowBig"; //removed the blur
-    const introText = e.target.parentElement.firstChild;
-    introText.remove();
-    e.target.remove();
-  };
   useEffect(() => {
     //when all three are found
     if (odlawFound && waldoFound && whitebeardFound) {
       setTimerOn(false);
       setAllowPopup(false);
       const snowPic = document.querySelector(".snowBig");
-      snowPic.className = "snowBig blur";
+      snowPic.className = "snowBig blur fitScreen";
       setWinnerModal(
         <div className="winnerModal">
           <div className="winnerTime">
@@ -241,9 +230,9 @@ function Snow(props) {
             </span>
           </div>
           <div className="winnerNameInput">
-            <form className="addBeachScore" onSubmit={addScore}>
+            <form className="addSnowScore" onSubmit={addScore}>
               <label htmlFor="name"></label>
-              <input type="text" name="name" placeholder="Name" maxlength="30"></input>
+              <input type="text" name="name" placeholder="Name" maxLength="30"></input>
               <button type="submit" className="submitScoreButton">
                 Add Score
               </button>
@@ -284,19 +273,14 @@ function Snow(props) {
     window.location.reload();
   };
   return (
-    <div>
-      <div className="introText">Find Waldo, Odlaw and Whitebeard!</div>
-      <button className="startTimerButton" onClick={unBlurImage}>
-        Start!
-      </button>
-      <div>{winnerModal}</div>
-      <div className={"snowBig blur"} onClick={popUpScreen}>
-        {popupText}
-        {circle}
-        <img src={snow} alt="Snow"></img>
-        <div className="notificationText">{notificationText}</div>
-      </div>
+    <div className="snowContainer">
+    <div>{winnerModal}</div>
+    <div className={"snowBig blur"} onClick={popUpScreen}>
+      {popupText}
+      {circle}
+      <img src={snow} alt="Snow"></img>
     </div>
+  </div>
   );
 }
 

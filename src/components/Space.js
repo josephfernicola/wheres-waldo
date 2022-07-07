@@ -8,7 +8,7 @@ import {
 } from "firebase/firestore";
 
 function Space (props) {
-  const { time, setTime, timerOn, setTimerOn } = props;
+  const { time, setTime, timerOn, setTimerOn, allowPopup, setAllowPopup } = props;
   const [popup, setPopup] = useState(true);
   const [popupText, setPopupText] = useState("");
   const [circle, setCircle] = useState("");
@@ -17,7 +17,6 @@ function Space (props) {
   const [validateOdlaw, setValidateOdlaw] = useState(false);
   const [validateWhitebeard, setValidateWhitebeard] = useState(false);
   const [notificationText, setNotificationText] = useState("");
-  const [allowPopup, setAllowPopup] = useState(false);
   const [waldoFound, setWaldoFound] = useState(false);
   const [odlawFound, setOdlawFound] = useState(false);
   const [whitebeardFound, setWhitebeardFound] = useState(false);
@@ -220,23 +219,13 @@ function Space (props) {
     //switch between true and false to check for character on every click
     setValidateWhitebeard((prevValue) => !prevValue);
   };
-
-  const unBlurImage = (e) => {
-    setTimerOn(true);
-    setAllowPopup(true); //allows people to click image to make guesses
-    const snowImg = e.target.parentElement.lastChild;
-    snowImg.className = "spaceBig"; //removed the blur
-    const introText = e.target.parentElement.firstChild;
-    introText.remove();
-    e.target.remove();
-  };
   useEffect(() => {
     //when all three are found
     if (odlawFound && waldoFound && whitebeardFound) {
       setTimerOn(false);
       setAllowPopup(false);
       const spacePic = document.querySelector(".spaceBig");
-      spacePic.className = "spaceBig blur";
+      spacePic.className = "spaceBig blur fitScreen";
       setWinnerModal(
         <div className="winnerModal">
           <div className="winnerTime">
@@ -248,7 +237,7 @@ function Space (props) {
             </span>
           </div>
           <div className="winnerNameInput">
-            <form className="addBeachScore" onSubmit={addScore}>
+            <form className="addSpaceScore" onSubmit={addScore}>
               <label htmlFor="name"></label>
               <input type="text" name="name" placeholder="Name" maxlength="30"></input>
               <button type="submit" className="submitScoreButton">
@@ -291,19 +280,14 @@ function Space (props) {
     window.location.reload();
   };
   return (
-    <div>
-      <div className="introText">Find Waldo, Odlaw and Whitebeard!</div>
-      <button className="startTimerButton" onClick={unBlurImage}>
-        Start!
-      </button>
-      <div>{winnerModal}</div>
-      <div className={"spaceBig blur"} onClick={popUpScreen}>
-        {popupText}
-        {circle}
-        <img src={space} alt="Space"></img>
-        <div className="notificationText">{notificationText}</div>
-      </div>
+    <div className="spaceContainer">
+    <div>{winnerModal}</div>
+    <div className={"spaceBig blur"} onClick={popUpScreen}>
+      {popupText}
+      {circle}
+      <img src={space} alt="Space"></img>
     </div>
+  </div>
   );
 }
 
