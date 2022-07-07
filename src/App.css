@@ -440,8 +440,8 @@ input:focus {
 }
 
   .returnHome, .startTimerButton {
-    height: 2rem;
-    width: 5rem;
+    height: 1.5rem;
+    width: 3.5rem;
     font-size: 0.6rem;
     margin-left: 0.2rem;
   }
@@ -506,6 +506,13 @@ margin-top: 10rem;
 }
 .boardTitles {
   padding-left: 1rem;
+}
+.nameAndTime {
+  padding-left: 1rem;
+}
+.leaderboardDisplay {
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 0;
 }
 }
 
