@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/wheres-waldo/static/css/main.e039c592.css",
-    "main.js": "/wheres-waldo/static/js/main.6ee37b48.js",
+    "main.css": "/wheres-waldo/static/css/main.ad6accc6.css",
+    "main.js": "/wheres-waldo/static/js/main.3304eafd.js",
     "static/media/waldo-space.jpeg": "/wheres-waldo/static/media/waldo-space.ecd7e7bdff1473a90c59.jpeg",
     "static/media/waldo-track.jpeg": "/wheres-waldo/static/media/waldo-track.dcd79bf1ce0619360780.jpeg",
     "static/media/waldo-snow.jpeg": "/wheres-waldo/static/media/waldo-snow.9736162ac89c68ce67a0.jpeg",
@@ -11,11 +11,11 @@
     "static/media/whitebeardFace.png": "/wheres-waldo/static/media/whitebeardFace.7a4c33600064b89a569b.png",
     "static/media/waldoFace.png": "/wheres-waldo/static/media/waldoFace.7533247be726745246a1.png",
     "index.html": "/wheres-waldo/index.html",
-    "main.e039c592.css.map": "/wheres-waldo/static/css/main.e039c592.css.map",
-    "main.6ee37b48.js.map": "/wheres-waldo/static/js/main.6ee37b48.js.map"
+    "main.ad6accc6.css.map": "/wheres-waldo/static/css/main.ad6accc6.css.map",
+    "main.3304eafd.js.map": "/wheres-waldo/static/js/main.3304eafd.js.map"
   },
   "entrypoints": [
-    "static/css/main.e039c592.css",
-    "static/js/main.6ee37b48.js"
+    "static/css/main.ad6accc6.css",
+    "static/js/main.3304eafd.js"
   ]
 }
