@@ -19,13 +19,22 @@ function NavBar(props) {
   );
   let location = useLocation();
 
+  useEffect(() => {
+    if (location.pathname !== "/beach" || location.pathname !== "/space" || location.pathname !== "/snow" || location.pathname !== "/track") {
+      setTimerOn(false);
+      setTime(0)
+    }
+  }, [location])
+
   const clearTimerAndResetColumns = () => {
     setTimerOn(false);
     setTime(0);
+    if (location.pathname === "/beach" || location.pathname === "/snow" || location.pathname === "/space" || location.pathname === "/track") {
     const nav = document.querySelector(".nav");
     nav.style.gridTemplateColumns = "1fr 1fr 1fr 1fr";
     // const startTimer = document.querySelector(".startTimerButton");
     // startTimer.className = "startTimerButton"
+    }
   };
   const unBlurImage = (e) => {
     if (location.pathname === "/beach") {
@@ -35,7 +44,7 @@ function NavBar(props) {
     beachImg.children[1].className = "beachBig"; //removed the blur
       const nav = document.querySelector(".nav");
       nav.style.gridTemplateColumns = "1fr 1fr .000001fr 1fr"
-    e.target.className="hidden"
+    e.target.className="hiddenNavBar"
     
     }
     else if (location.pathname === "/snow") {
@@ -62,7 +71,7 @@ function NavBar(props) {
           const spaceImg = document.querySelector(".spaceContainer").children[1]
           spaceImg.className = "spaceBig"; //removed the blur
           const nav = document.querySelector(".nav");
-          nav.style.gridTemplateColumns = "1fr 1fr .000001fr 1fr"
+          nav.style.gridTemplateColumns = "1fr 1fr .000001fr 1fr";
           e.target.className="hidden";
           }
   };
