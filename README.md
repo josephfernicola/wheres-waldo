@@ -1,5 +1,3 @@
-# wheres-waldo
-
 Where's Waldo App created using React.
 
 Images from:
