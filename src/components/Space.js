@@ -16,19 +16,12 @@ function Space (props) {
   const [validateWaldo, setValidateWaldo] = useState(false);
   const [validateOdlaw, setValidateOdlaw] = useState(false);
   const [validateWhitebeard, setValidateWhitebeard] = useState(false);
-  const [notificationText, setNotificationText] = useState("");
   const [waldoFound, setWaldoFound] = useState(false);
   const [odlawFound, setOdlawFound] = useState(false);
   const [whitebeardFound, setWhitebeardFound] = useState(false);
   const [winnerModal, setWinnerModal] = useState("");
   let location = useLocation();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setTimeout(() => {
-      setNotificationText("");
-    }, 4000);
-  }, [validateWaldo, validateOdlaw, validateWhitebeard]);
 
   useEffect(() => {
     if (circleCoordinates.length === 2) {
@@ -39,17 +32,11 @@ function Space (props) {
         circleCoordinates[1].top < 611 &&
         circleCoordinates[1].top > 571
       ) {
-        setNotificationText(
-          <div className="correctNotification">Found Waldo!</div>
-        );
+
         const waldoImg =
           document.querySelector(".waldoImageAndName").firstChild;
         waldoImg.className = "greyOut";
         setWaldoFound(true);
-      } else {
-        setNotificationText(
-          <div className="wrongNotification">Try Again!</div>
-        );
       }
     }
   }, [validateWaldo]);
@@ -63,17 +50,11 @@ function Space (props) {
         circleCoordinates[1].top < 673 &&
         circleCoordinates[1].top > 634
       ) {
-        setNotificationText(
-          <div className="correctNotification">Found Odlaw!</div>
-        );
+ 
         const odlawImg =
           document.querySelector(".odlawImageAndName").firstChild;
         odlawImg.className = "greyOut";
         setOdlawFound(true);
-      } else {
-        setNotificationText(
-          <div className="wrongNotification">Try Again!</div>
-        );
       }
     }
   }, [validateOdlaw]);
@@ -87,18 +68,12 @@ function Space (props) {
         circleCoordinates[1].top < 568 &&
         circleCoordinates[1].top > 529
       ) {
-        setNotificationText(
-          <div className="correctNotification">Found Whitebeard!</div>
-        );
+
         const whitebeardImg = document.querySelector(
           ".whitebeardImageAndName"
         ).firstChild;
         whitebeardImg.className = "greyOut";
         setWhitebeardFound(true);
-      } else {
-        setNotificationText(
-          <div className="wrongNotification">Try Again!</div>
-        );
       }
     }
   }, [validateWhitebeard]);
@@ -244,14 +219,9 @@ function Space (props) {
                 Add Score
               </button>
             </form>
-            <div className="tryAgainAndLeaderboard">
-              <button type="button" className="tryAgain" onClick={refreshPage}>
-                Try Again
-              </button>
               <Link to="/leaderboards">
                 <button className="leaderboardButton">View Leaderboards</button>
               </Link>
-            </div>
           </div>
         </div>
       );

@@ -4,7 +4,8 @@ import { useLocation, Link, useNavigate } from "react-router-dom";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 function Snow(props) {
-  const { time, setTime, timerOn, setTimerOn, allowPopup, setAllowPopup } = props;
+  const { time, setTime, timerOn, setTimerOn, allowPopup, setAllowPopup } =
+    props;
   const [popup, setPopup] = useState(true);
   const [popupText, setPopupText] = useState("");
   const [circle, setCircle] = useState("");
@@ -12,19 +13,12 @@ function Snow(props) {
   const [validateWaldo, setValidateWaldo] = useState(false);
   const [validateOdlaw, setValidateOdlaw] = useState(false);
   const [validateWhitebeard, setValidateWhitebeard] = useState(false);
-  const [notificationText, setNotificationText] = useState("");
   const [waldoFound, setWaldoFound] = useState(false);
   const [odlawFound, setOdlawFound] = useState(false);
   const [whitebeardFound, setWhitebeardFound] = useState(false);
   const [winnerModal, setWinnerModal] = useState("");
   let location = useLocation();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setTimeout(() => {
-      setNotificationText("");
-    }, 4000);
-  }, [validateWaldo, validateOdlaw, validateWhitebeard]);
 
   useEffect(() => {
     if (circleCoordinates.length === 2) {
@@ -34,17 +28,10 @@ function Snow(props) {
         circleCoordinates[1].top < 681 &&
         circleCoordinates[1].top > 641
       ) {
-        setNotificationText(
-          <div className="correctNotification">Found Waldo!</div>
-        );
         const waldoImg =
           document.querySelector(".waldoImageAndName").firstChild;
         waldoImg.className = "greyOut";
         setWaldoFound(true);
-      } else {
-        setNotificationText(
-          <div className="wrongNotification">Try Again!</div>
-        );
       }
     }
   }, [validateWaldo]);
@@ -57,17 +44,11 @@ function Snow(props) {
         circleCoordinates[1].top < 598 &&
         circleCoordinates[1].top > 563
       ) {
-        setNotificationText(
-          <div className="correctNotification">Found Odlaw!</div>
-        );
+
         const odlawImg =
           document.querySelector(".odlawImageAndName").firstChild;
         odlawImg.className = "greyOut";
         setOdlawFound(true);
-      } else {
-        setNotificationText(
-          <div className="wrongNotification">Try Again!</div>
-        );
       }
     }
   }, [validateOdlaw]);
@@ -80,19 +61,12 @@ function Snow(props) {
         circleCoordinates[1].top < 712 &&
         circleCoordinates[1].top > 672
       ) {
-        setNotificationText(
-          <div className="correctNotification">Found Whitebeard!</div>
-        );
         const whitebeardImg = document.querySelector(
           ".whitebeardImageAndName"
         ).firstChild;
         whitebeardImg.className = "greyOut";
         setWhitebeardFound(true);
-      } else {
-        setNotificationText(
-          <div className="wrongNotification">Try Again!</div>
-        );
-      }
+      } 
     }
   }, [validateWhitebeard]);
 
@@ -232,19 +206,20 @@ function Snow(props) {
           <div className="winnerNameInput">
             <form className="addSnowScore" onSubmit={addScore}>
               <label htmlFor="name"></label>
-              <input type="text" name="name" placeholder="Name" maxLength="30"></input>
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                maxLength="30"
+              ></input>
               <button type="submit" className="submitScoreButton">
                 Add Score
               </button>
             </form>
-            <div className="tryAgainAndLeaderboard">
-              <button type="button" className="tryAgain" onClick={refreshPage}>
-                Try Again
-              </button>
+   
               <Link to="/leaderboards">
                 <button className="leaderboardButton">View Leaderboards</button>
               </Link>
-            </div>
           </div>
         </div>
       );
@@ -256,31 +231,31 @@ function Snow(props) {
     const allScores = getFirestore();
     const scoreRef = collection(allScores, "snowScores");
     if (e.target.children[1].value.length > 0) {
-    addDoc(scoreRef, {
-      name: e.target.children[1].value,
-      time:
-        ("0" + Math.floor((time / 60000) % 60)).slice(-2) +
-        "m : " +
-        ("0" + Math.floor((time / 1000) % 60)).slice(-2) +
-        "s : " +
-        ("0" + ((time / 10) % 100)).slice(-2) +
-        "ms",
-    });
-    navigate("/leaderboards");
-  }
+      addDoc(scoreRef, {
+        name: e.target.children[1].value,
+        time:
+          ("0" + Math.floor((time / 60000) % 60)).slice(-2) +
+          "m : " +
+          ("0" + Math.floor((time / 1000) % 60)).slice(-2) +
+          "s : " +
+          ("0" + ((time / 10) % 100)).slice(-2) +
+          "ms",
+      });
+      navigate("/leaderboards");
+    }
   };
   const refreshPage = () => {
     navigate(0);
   };
   return (
     <div className="snowContainer">
-    <div>{winnerModal}</div>
-    <div className={"snowBig blur"} onClick={popUpScreen}>
-      {popupText}
-      {circle}
-      <img src={snow} alt="Snow"></img>
+      <div>{winnerModal}</div>
+      <div className={"snowBig blur"} onClick={popUpScreen}>
+        {popupText}
+        {circle}
+        <img src={snow} alt="Snow"></img>
+      </div>
     </div>
-  </div>
   );
 }
 

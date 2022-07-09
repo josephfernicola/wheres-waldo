@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 
-
 function Beach(props) {
   const { time, setTimerOn, allowPopup, setAllowPopup } = props;
   const [popup, setPopup] = useState(true);
@@ -17,9 +16,9 @@ function Beach(props) {
   const [odlawFound, setOdlawFound] = useState(false);
   const [whitebeardFound, setWhitebeardFound] = useState(false);
   const [winnerModal, setWinnerModal] = useState("");
+  const [forceReloadPage, setForceReloadPage] = useState(true);
   let location = useLocation();
   const navigate = useNavigate();
-
 
   const popUpScreen = (e) => {
     if (allowPopup) {
@@ -146,13 +145,11 @@ function Beach(props) {
         circleCoordinates[1].top < 371 &&
         circleCoordinates[1].top > 326
       ) {
-       
         const waldoImg =
           document.querySelector(".waldoImageAndName").firstChild;
         waldoImg.className = "greyOut";
         setWaldoFound(true);
-      } 
-      
+      }
     }
   }, [validateWaldo]);
 
@@ -185,7 +182,7 @@ function Beach(props) {
         ).firstChild;
         whitebeardImg.className = "greyOut";
         setWhitebeardFound(true);
-      } 
+      }
     }
   }, [validateWhitebeard]);
 
@@ -219,16 +216,10 @@ function Beach(props) {
                 Add Score
               </button>
             </form>
-            <div className="tryAgainAndLeaderboard">
 
-              <button type="button" className="tryAgain" onClick={refreshPage}>
-                Try Again
-              </button>
-
-              <Link to="/leaderboards">
-                <button className="leaderboardButton">View Leaderboards</button>
-              </Link>
-            </div>
+            <Link to="/leaderboards">
+              <button className="leaderboardButton">View Leaderboards</button>
+            </Link>
           </div>
         </div>
       );
@@ -254,7 +245,7 @@ function Beach(props) {
     }
   };
   const refreshPage = () => {
-    navigate(0);
+    setForceReloadPage((prevValue) => !prevValue);
   };
   return (
     <div className="beachContainer">
