@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 
+
 function Beach(props) {
   const { time, setTimerOn, allowPopup, setAllowPopup } = props;
   const [popup, setPopup] = useState(true);
@@ -12,13 +13,13 @@ function Beach(props) {
   const [validateWaldo, setValidateWaldo] = useState(false);
   const [validateOdlaw, setValidateOdlaw] = useState(false);
   const [validateWhitebeard, setValidateWhitebeard] = useState(false);
-  const [notificationText, setNotificationText] = useState("");
   const [waldoFound, setWaldoFound] = useState(false);
   const [odlawFound, setOdlawFound] = useState(false);
   const [whitebeardFound, setWhitebeardFound] = useState(false);
   const [winnerModal, setWinnerModal] = useState("");
   let location = useLocation();
   const navigate = useNavigate();
+
 
   const popUpScreen = (e) => {
     if (allowPopup) {
@@ -219,9 +220,11 @@ function Beach(props) {
               </button>
             </form>
             <div className="tryAgainAndLeaderboard">
+
               <button type="button" className="tryAgain" onClick={refreshPage}>
                 Try Again
               </button>
+
               <Link to="/leaderboards">
                 <button className="leaderboardButton">View Leaderboards</button>
               </Link>
@@ -251,7 +254,7 @@ function Beach(props) {
     }
   };
   const refreshPage = () => {
-    window.location.reload();
+    navigate(0);
   };
   return (
     <div className="beachContainer">

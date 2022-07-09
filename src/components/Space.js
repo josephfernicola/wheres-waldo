@@ -277,7 +277,7 @@ function Space (props) {
   }
   };
   const refreshPage = () => {
-    window.location.reload();
+    navigate(0);
   };
   return (
     <div className="spaceContainer">

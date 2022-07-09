@@ -78,8 +78,6 @@ function Track (props) {
 
   useEffect(() => {
     if (circleCoordinates.length === 2) {
-      console.log("left" , circleCoordinates[0].left);
-      console.log("top" , circleCoordinates[1].top)
       if (
         circleCoordinates[0].left < 905 &&
         circleCoordinates[0].left > 864 &&
@@ -277,7 +275,7 @@ function Track (props) {
   }
   };
   const refreshPage = () => {
-    window.location.reload();
+    navigate(0);
   };
   return (
     <div className="trackContainer">
