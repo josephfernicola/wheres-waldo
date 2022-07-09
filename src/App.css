@@ -371,9 +371,10 @@ button:hover {
 
 .addBeachScore,
 .addSnowScore,
-.addSpaceScore {
+.addSpaceScore,
+.addTrackScore {
   display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-columns: 1fr 0.7fr 1.5fr;
   width: 30rem;
   align-items: center;
 }
@@ -384,6 +385,7 @@ button:hover {
 .addTrackScore > input {
   height: 1rem;
   margin-right: 2rem;
+  max-width: 17rem;
 }
 
 input:focus {

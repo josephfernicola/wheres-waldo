@@ -214,7 +214,7 @@ function Space (props) {
           <div className="winnerNameInput">
             <form className="addSpaceScore" onSubmit={addScore}>
               <label htmlFor="name"></label>
-              <input type="text" name="name" placeholder="Name" maxlength="30"></input>
+              <input type="text" name="name" placeholder="Name" maxLength="30"></input>
               <button type="submit" className="submitScoreButton">
                 Add Score
               </button>

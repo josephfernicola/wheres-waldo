@@ -135,7 +135,7 @@ function Track (props) {
           );
         } else if (!waldoFound && odlawFound && !whitebeardFound) {
           setPopupText(
-            <div className="singlePopup" style={{ ...popupX, ...popupY }}>
+            <div className="popup" style={{ ...popupX, ...popupY }}>
               <div onClick={switchValidateWaldo} className="waldoText">
                 Waldo
               </div>
@@ -211,7 +211,7 @@ function Track (props) {
           <div className="winnerNameInput">
             <form className="addTrackScore" onSubmit={addScore}>
               <label htmlFor="name"></label>
-              <input type="text" name="name" placeholder="Name" maxlength="30"></input>
+              <input type="text" name="name" placeholder="Name" maxLength="30"></input>
               <button type="submit" className="submitScoreButton">
                 Add Score
               </button>
