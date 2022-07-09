@@ -26,14 +26,20 @@ function NavBar(props) {
     }
   }, [location])
 
+  useEffect(() => {
+  if (location.pathname === "/leaderboards") {
+
+  }
+  }, [location])
+
   const clearTimerAndResetColumns = () => {
     setTimerOn(false);
     setTime(0);
     if (location.pathname === "/beach" || location.pathname === "/snow" || location.pathname === "/space" || location.pathname === "/track") {
     const nav = document.querySelector(".nav");
     nav.style.gridTemplateColumns = "1fr 1fr 1fr 1fr";
-    // const startTimer = document.querySelector(".startTimerButton");
-    // startTimer.className = "startTimerButton"
+  
+
     }
   };
   const unBlurImage = (e) => {
@@ -54,7 +60,7 @@ function NavBar(props) {
       snowImg.className = "snowBig"; //removed the blur
       const nav = document.querySelector(".nav");
       nav.style.gridTemplateColumns = "1fr 1fr .000001fr 1fr"
-      e.target.className="hidden";
+      e.target.className="hiddenNavBar";
       }
       else if (location.pathname === "/track") {
         setTimerOn(true);
@@ -63,7 +69,7 @@ function NavBar(props) {
         trackImg.className = "trackBig"; //removed the blur
         const nav = document.querySelector(".nav");
         nav.style.gridTemplateColumns = "1fr 1fr .000001fr 1fr"
-        e.target.className="hidden";
+        e.target.className="hiddenNavBar";
         }
         else if (location.pathname === "/space") {
           setTimerOn(true);
@@ -72,7 +78,7 @@ function NavBar(props) {
           spaceImg.className = "spaceBig"; //removed the blur
           const nav = document.querySelector(".nav");
           nav.style.gridTemplateColumns = "1fr 1fr .000001fr 1fr";
-          e.target.className="hidden";
+          e.target.className="hiddenNavBar";
           }
   };
   const setNavBar = () => {
@@ -147,7 +153,7 @@ function NavBar(props) {
       setNavText(setNavBar);
     } else if (location.pathname === "/leaderboards") {
       setNavText(
-        <nav className="leaderboardNav">
+        <div className="leaderboardNav">
           <Link to="/wheres-waldo">
             <button className="returnHome" onClick={clearTimerAndResetColumns}>
               Return to Home
@@ -158,7 +164,7 @@ function NavBar(props) {
             <div className="logoWhere">Where's</div>
             <div className="logoWaldo">Waldo</div>
           </div>
-        </nav>
+        </div>
       );
     }
   }, [location]);
