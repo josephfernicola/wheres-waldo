@@ -1,5 +1,8 @@
 # wheres-waldo
 
+Where's Waldo App created using React.
+
+Images from:
 
 https://wall.alphacoders.com/by_sub_category.php?id=220473&name=Where%27s+Waldo%3F+Wallpapers
 
