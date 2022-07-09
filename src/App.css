@@ -260,10 +260,6 @@ button:hover {
 .winnerModal {
   height: 15rem;
 }
-.fitScreen {
-  overflow: hidden;
-  height: 45rem;
-}
 
 .winnerNameInput {
   height: 20rem;
@@ -415,6 +411,19 @@ input:focus {
   margin-top: 0.5rem;
 }
 
+.fitScreen {
+  overflow: hidden;
+  width: 100%;
+}
+
+.winnerNameInput,
+.addBeachScore,
+.addSnowScore,
+.addSpaceScore,
+.addTrackScore {
+  width: 100%;
+}
+
 @media (max-width: 1200px) {
   .leaderboardBeach > img,
   .leaderboardSnow > img,
@@ -535,4 +544,9 @@ input:focus {
     grid-template-columns: 1fr 1fr;
     margin-bottom: 0;
   }
+  .fitScreen {
+    height: 45rem;
+
+  }
+
 }

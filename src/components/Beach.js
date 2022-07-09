@@ -16,7 +16,6 @@ function Beach(props) {
   const [odlawFound, setOdlawFound] = useState(false);
   const [whitebeardFound, setWhitebeardFound] = useState(false);
   const [winnerModal, setWinnerModal] = useState("");
-  const [forceReloadPage, setForceReloadPage] = useState(true);
   let location = useLocation();
   const navigate = useNavigate();
 
@@ -244,9 +243,7 @@ function Beach(props) {
       navigate("/leaderboards");
     }
   };
-  const refreshPage = () => {
-    setForceReloadPage((prevValue) => !prevValue);
-  };
+
   return (
     <div className="beachContainer">
       <div>{winnerModal}</div>

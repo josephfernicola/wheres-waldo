@@ -246,9 +246,7 @@ function Space (props) {
     navigate("/leaderboards");
   }
   };
-  const refreshPage = () => {
-    navigate(0);
-  };
+
   return (
     <div className="spaceContainer">
     <div>{winnerModal}</div>
