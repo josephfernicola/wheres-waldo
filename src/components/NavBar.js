@@ -7,7 +7,8 @@ import whitebeard from "../images/whitebeardFace.png";
 import logo from "../images/waldoHomeFace.png";
 
 function NavBar(props) {
-  const { time, setTime, timerOn, setTimerOn, allowPopup, setAllowPopup } = props;
+  const { time, setTime, timerOn, setTimerOn, allowPopup, setAllowPopup } =
+    props;
   const [navText, setNavText] = useState(
     <nav className="homeNav">
       <div className="nameLogo">
@@ -20,66 +21,65 @@ function NavBar(props) {
   let location = useLocation();
 
   useEffect(() => {
-    if (location.pathname !== "/beach" || location.pathname !== "/space" || location.pathname !== "/snow" || location.pathname !== "/track") {
+    if (
+      location.pathname !== "/beach" ||
+      location.pathname !== "/space" ||
+      location.pathname !== "/snow" ||
+      location.pathname !== "/track"
+    ) {
       setTimerOn(false);
-      setTime(0)
+      setTime(0);
     }
-  }, [location])
-
-  useEffect(() => {
-  if (location.pathname === "/leaderboards") {
-
-  }
-  }, [location])
+  }, [location]);
 
   const clearTimerAndResetColumns = () => {
     setTimerOn(false);
     setTime(0);
-    if (location.pathname === "/beach" || location.pathname === "/snow" || location.pathname === "/space" || location.pathname === "/track") {
-    const nav = document.querySelector(".nav");
-    nav.style.gridTemplateColumns = "1fr 1fr 1fr 1fr";
-  
-
+    if (
+      location.pathname === "/beach" ||
+      location.pathname === "/snow" ||
+      location.pathname === "/space" ||
+      location.pathname === "/track"
+    ) {
+      const nav = document.querySelector(".nav");
+      nav.style.gridTemplateColumns = "1fr 1fr 1fr 1fr";
+      setAllowPopup(false);
     }
   };
   const unBlurImage = (e) => {
     if (location.pathname === "/beach") {
-    setTimerOn(true);
-    setAllowPopup(true); //allows people to click image to make guesses
-    const beachImg = document.querySelector(".beachContainer");
-    beachImg.children[1].className = "beachBig"; //removed the blur
-      const nav = document.querySelector(".nav");
-      nav.style.gridTemplateColumns = "1fr 1fr .000001fr 1fr"
-    e.target.className="hiddenNavBar"
-    
-    }
-    else if (location.pathname === "/snow") {
       setTimerOn(true);
       setAllowPopup(true); //allows people to click image to make guesses
-      const snowImg = document.querySelector(".snowContainer").children[1]
+      const beachImg = document.querySelector(".beachContainer");
+      beachImg.children[1].className = "beachBig"; //removed the blur
+      const nav = document.querySelector(".nav");
+      nav.style.gridTemplateColumns = "1fr 1fr .000001fr 1fr";
+      e.target.className = "hiddenNavBar";
+    } else if (location.pathname === "/snow") {
+      setTimerOn(true);
+      setAllowPopup(true); //allows people to click image to make guesses
+      const snowImg = document.querySelector(".snowContainer").children[1];
       snowImg.className = "snowBig"; //removed the blur
       const nav = document.querySelector(".nav");
-      nav.style.gridTemplateColumns = "1fr 1fr .000001fr 1fr"
-      e.target.className="hiddenNavBar";
-      }
-      else if (location.pathname === "/track") {
-        setTimerOn(true);
-        setAllowPopup(true); //allows people to click image to make guesses
-        const trackImg = document.querySelector(".trackContainer").children[1]
-        trackImg.className = "trackBig"; //removed the blur
-        const nav = document.querySelector(".nav");
-        nav.style.gridTemplateColumns = "1fr 1fr .000001fr 1fr"
-        e.target.className="hiddenNavBar";
-        }
-        else if (location.pathname === "/space") {
-          setTimerOn(true);
-          setAllowPopup(true); //allows people to click image to make guesses
-          const spaceImg = document.querySelector(".spaceContainer").children[1]
-          spaceImg.className = "spaceBig"; //removed the blur
-          const nav = document.querySelector(".nav");
-          nav.style.gridTemplateColumns = "1fr 1fr .000001fr 1fr";
-          e.target.className="hiddenNavBar";
-          }
+      nav.style.gridTemplateColumns = "1fr 1fr .000001fr 1fr";
+      e.target.className = "hiddenNavBar";
+    } else if (location.pathname === "/track") {
+      setTimerOn(true);
+      setAllowPopup(true); //allows people to click image to make guesses
+      const trackImg = document.querySelector(".trackContainer").children[1];
+      trackImg.className = "trackBig"; //removed the blur
+      const nav = document.querySelector(".nav");
+      nav.style.gridTemplateColumns = "1fr 1fr .000001fr 1fr";
+      e.target.className = "hiddenNavBar";
+    } else if (location.pathname === "/space") {
+      setTimerOn(true);
+      setAllowPopup(true); //allows people to click image to make guesses
+      const spaceImg = document.querySelector(".spaceContainer").children[1];
+      spaceImg.className = "spaceBig"; //removed the blur
+      const nav = document.querySelector(".nav");
+      nav.style.gridTemplateColumns = "1fr 1fr .000001fr 1fr";
+      e.target.className = "hiddenNavBar";
+    }
   };
   const setNavBar = () => {
     return (
