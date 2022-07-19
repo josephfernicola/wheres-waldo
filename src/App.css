@@ -2,6 +2,11 @@
   font-family: "Nunito", sans-serif;
 }
 
+img {
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
 body {
   text-align: center;
   background-color: rgb(224, 215, 215);
@@ -548,7 +553,6 @@ input:focus {
   }
   .fitScreen {
     height: 45rem;
-
   }
 
 }
