@@ -2,11 +2,6 @@
   font-family: "Nunito", sans-serif;
 }
 
-img {
-  image-rendering: auto;
-  image-rendering: crisp-edges;
-  image-rendering: pixelated;
-}
 body {
   text-align: center;
   background-color: rgb(224, 215, 215);
@@ -52,6 +47,9 @@ nav {
   width: 20rem;
   outline: 1px solid black;
   transition: all 0.1s ease-in-out;
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
 }
 
 .beachSmall > img:hover,
