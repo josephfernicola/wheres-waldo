@@ -216,7 +216,6 @@ function Beach(props) {
         );
       }
     }
-
   }, [validateOdlaw]);
 
   useEffect(() => {
@@ -244,15 +243,14 @@ function Beach(props) {
     }
   }, [validateWhitebeard]);
 
-
   useEffect(() => {
     //when all three are found
     if (odlawFound && waldoFound && whitebeardFound) {
       setStartButtonAndNotificationText("");
-     
+
       setTimerOn(false);
       setAllowPopup(false);
-   
+
       const beachPic = document.querySelector(".mapBig");
       beachPic.className = "mapBig blur fitScreen";
       setWinnerModal(
@@ -286,9 +284,7 @@ function Beach(props) {
         </div>
       );
     }
-
   }, [odlawFound, waldoFound, whitebeardFound, setTimerOn, time]);
-
 
   const addScore = (e) => {
     e.preventDefault();
@@ -308,6 +304,17 @@ function Beach(props) {
       navigate("/leaderboards");
     }
   };
+
+  useEffect(() => {
+    const winnerModal = document.querySelector(".winnerModalContainer");
+    const navStartButtonAndNotificationText = document.querySelector(".startButtonAndNotificationText");
+    if (winnerModal) {
+      if (winnerModal.firstChild) {
+        setStartButtonAndNotificationText("");
+        navStartButtonAndNotificationText.firstChild.textContent = ""
+      }
+    }
+  }, [winnerModal, setWinnerModal])
 
   return (
     <div className="mapContainer">

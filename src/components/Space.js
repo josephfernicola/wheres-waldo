@@ -269,6 +269,16 @@ function Space (props) {
     navigate("/leaderboards");
   }
   };
+  useEffect(() => {
+    const winnerModal = document.querySelector(".winnerModalContainer");
+    const navStartButtonAndNotificationText = document.querySelector(".startButtonAndNotificationText");
+    if (winnerModal) {
+      if (winnerModal.firstChild) {
+        setStartButtonAndNotificationText("");
+        navStartButtonAndNotificationText.firstChild.textContent = ""
+      }
+    }
+  }, [winnerModal, setWinnerModal])
 
   return (
     <div className="mapContainer">
