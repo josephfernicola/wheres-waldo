@@ -1,6 +1,6 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Home from "./Home";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
 import Beach from "./components/Beach";
 import Snow from "./components/Snow";
@@ -12,6 +12,7 @@ const RouteSwitch = () => {
   const [time, setTime] = useState(0);
   const [timerOn, setTimerOn] = useState(false);
   const [allowPopup, setAllowPopup] = useState(false);
+  
 
   const unBlurImage = (e) => {
     setTimerOn(true);
@@ -23,6 +24,8 @@ const RouteSwitch = () => {
 
   const [startButtonAndNotificationText, setStartButtonAndNotificationText] =
     useState(<button className="startTimerButton" onClick={unBlurImage}>Start!</button>);
+
+
 
   return (
     <BrowserRouter>

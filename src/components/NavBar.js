@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import waldo from "../images/waldoFace.png";
 import odlaw from "../images/odlawFace.png";
@@ -27,7 +26,13 @@ function NavBar(props) {
     </nav>
   );
 
-  
+  const unBlurImage = (e) => {
+    setTimerOn(true);
+    setAllowPopup(true); //allows people to click image to make guesses
+    setStartButtonAndNotificationText("");
+    const mapContainer = document.querySelector(".mapContainer");
+    mapContainer.children[1].className = "mapBig"; //remove the blur
+  };
 
   let location = useLocation();
 
@@ -41,6 +46,14 @@ function NavBar(props) {
       setTimerOn(false);
       setTime(0);
     }
+  }, [location]);
+
+  useEffect(() => { //reset the start button times anytime the user changes pages
+    setStartButtonAndNotificationText(
+      <button className="startTimerButton" onClick={unBlurImage}>
+        Start!
+      </button>
+    );
   }, [location]);
 
   const clearTimerAndResetColumns = () => {
@@ -82,7 +95,9 @@ function NavBar(props) {
             <div>Whitebeard</div>
           </div>
         </div>
-        <div className="startButtonAndNotificationText">{startButtonAndNotificationText}</div>
+        <div className="startButtonAndNotificationText">
+          {startButtonAndNotificationText}
+        </div>
 
         <div className="timer">
           <div className="minutes">
