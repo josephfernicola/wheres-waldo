@@ -4,7 +4,7 @@ import { useLocation, Link, useNavigate } from "react-router-dom";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 function Snow(props) {
-  const { time, setTime, timerOn, setTimerOn, allowPopup, setAllowPopup } =
+  const { time, setTime, timerOn, setTimerOn, allowPopup, setAllowPopup, setStartButtonAndNotificationText, startButtonAndNotificationText } =
     props;
   const [popup, setPopup] = useState(true);
   const [popupText, setPopupText] = useState("");
@@ -32,6 +32,13 @@ function Snow(props) {
           document.querySelector(".waldoImageAndName").firstChild;
         waldoImg.className = "greyOut";
         setWaldoFound(true);
+        setStartButtonAndNotificationText(
+          <div className="correctGuess">Found Waldo!</div>
+        );
+      } else {
+      setStartButtonAndNotificationText(
+        <div className="wrongGuess">Try Again!</div>
+      );
       }
     }
   }, [validateWaldo]);
@@ -49,6 +56,14 @@ function Snow(props) {
           document.querySelector(".odlawImageAndName").firstChild;
         odlawImg.className = "greyOut";
         setOdlawFound(true);
+        setStartButtonAndNotificationText(
+          <div className="correctGuess">Found Odlaw!</div>
+        );
+      }
+      else {
+        setStartButtonAndNotificationText(
+          <div className="wrongGuess">Try Again!</div>
+        );
       }
     }
   }, [validateOdlaw]);
@@ -66,7 +81,14 @@ function Snow(props) {
         ).firstChild;
         whitebeardImg.className = "greyOut";
         setWhitebeardFound(true);
-      } 
+        setStartButtonAndNotificationText(
+          <div className="correctGuess">Found Whitebeard!</div>
+        );
+      } else {
+        setStartButtonAndNotificationText(
+          <div className="wrongGuess">Try Again!</div>
+        );
+      }
     }
   }, [validateWhitebeard]);
 
@@ -191,8 +213,9 @@ function Snow(props) {
     if (odlawFound && waldoFound && whitebeardFound) {
       setTimerOn(false);
       setAllowPopup(false);
-      const snowPic = document.querySelector(".snowBig");
-      snowPic.className = "snowBig blur fitScreen";
+      setStartButtonAndNotificationText("");
+      const snowPic = document.querySelector(".mapBig");
+      snowPic.className = "mapBig blur fitScreen";
       setWinnerModal(
         <div className="winnerModal">
           <div className="winnerTime">
@@ -244,13 +267,11 @@ function Snow(props) {
       navigate("/leaderboards");
     }
   };
-  const refreshPage = () => {
-    navigate(0);
-  };
+
   return (
-    <div className="snowContainer">
+    <div className="mapContainer">
       <div>{winnerModal}</div>
-      <div className={"snowBig blur"} onClick={popUpScreen}>
+      <div className={"mapBig blur"} onClick={popUpScreen}>
         {popupText}
         {circle}
         <img src={snow} alt="Snow"></img>

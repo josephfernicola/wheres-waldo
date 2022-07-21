@@ -31,13 +31,13 @@ nav {
   padding: 0;
 }
 
-.hiddenNavBar {
+/* .hiddenNavBar {
   visibility: hidden;
   width: 0px;
   height: 0px;
   margin: 0;
   padding: 0;
-}
+} */
 
 .beachSmall > img,
 .snowSmall > img,
@@ -64,10 +64,7 @@ nav {
   transform: scale(1.1);
 }
 
-.beachBig > img,
-.snowBig > img,
-.trackBig > img,
-.spaceBig > img {
+.mapBig > img {
   width: 90rem;
   overflow: scroll;
 }
@@ -429,6 +426,14 @@ input:focus {
   width: 100%;
 }
 
+.correctGuess {
+  color: rgb(50, 168, 50);
+}
+
+.wrongGuess {
+  color: rgb(230, 77, 77);
+}
+
 @media (max-width: 1200px) {
   .leaderboardBeach > img,
   .leaderboardSnow > img,
@@ -551,6 +556,10 @@ input:focus {
   }
   .fitScreen {
     height: 45rem;
+  }
+
+  .correctGuess, .wrongGuess {
+    font-size: 0.8rem;
   }
 
 }

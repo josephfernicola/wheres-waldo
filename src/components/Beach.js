@@ -4,7 +4,14 @@ import { useLocation, Link, useNavigate } from "react-router-dom";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 function Beach(props) {
-  const { time, setTimerOn, allowPopup, setAllowPopup } = props;
+  const {
+    time,
+    setTimerOn,
+    allowPopup,
+    setAllowPopup,
+    startButtonAndNotificationText,
+    setStartButtonAndNotificationText,
+  } = props;
   const [popup, setPopup] = useState(true);
   const [popupText, setPopupText] = useState("");
   const [circle, setCircle] = useState("");
@@ -18,6 +25,33 @@ function Beach(props) {
   const [winnerModal, setWinnerModal] = useState("");
   let location = useLocation();
   const navigate = useNavigate();
+
+  const unBlurImage = () => {
+    setTimerOn(true);
+    setAllowPopup(true); //allows people to click image to make guesses
+    setStartButtonAndNotificationText("");
+    const mapContainer = document.querySelector(".mapContainer");
+    mapContainer.children[1].className = "mapBig"; //remove the blur
+  };
+
+  // let timer;
+
+  // const runTimer = () => {
+  //   timer = setTimeout(() => {
+  //     setStartButtonAndNotificationText("");
+  //   }, 8000);
+  // };
+  // useEffect(() => {
+  //   runTimer();
+  // }, []);
+
+  useEffect(() => {
+    setStartButtonAndNotificationText(
+      <button className="startTimerButton" onClick={unBlurImage}>
+        Start!
+      </button>
+    );
+  }, []);
 
   const popUpScreen = (e) => {
     if (allowPopup) {
@@ -148,6 +182,14 @@ function Beach(props) {
           document.querySelector(".waldoImageAndName").firstChild;
         waldoImg.className = "greyOut";
         setWaldoFound(true);
+
+        setStartButtonAndNotificationText(
+          <div className="correctGuess">Found Waldo!</div>
+        );
+      } else {
+        setStartButtonAndNotificationText(
+          <div className="wrongGuess">Try Again!</div>
+        );
       }
     }
   }, [validateWaldo]);
@@ -164,8 +206,17 @@ function Beach(props) {
           document.querySelector(".odlawImageAndName").firstChild;
         odlawImg.className = "greyOut";
         setOdlawFound(true);
+
+        setStartButtonAndNotificationText(
+          <div className="correctGuess">Found Odlaw!</div>
+        );
+      } else {
+        setStartButtonAndNotificationText(
+          <div className="wrongGuess">Try Again!</div>
+        );
       }
     }
+
   }, [validateOdlaw]);
 
   useEffect(() => {
@@ -181,17 +232,29 @@ function Beach(props) {
         ).firstChild;
         whitebeardImg.className = "greyOut";
         setWhitebeardFound(true);
+
+        setStartButtonAndNotificationText(
+          <div className="correctGuess">Found Whitebeard!</div>
+        );
+      } else {
+        setStartButtonAndNotificationText(
+          <div className="wrongGuess">Try Again!</div>
+        );
       }
     }
   }, [validateWhitebeard]);
 
+
   useEffect(() => {
     //when all three are found
     if (odlawFound && waldoFound && whitebeardFound) {
+      setStartButtonAndNotificationText("");
+     
       setTimerOn(false);
       setAllowPopup(false);
-      const beachPic = document.querySelector(".beachBig");
-      beachPic.className = "beachBig blur fitScreen";
+   
+      const beachPic = document.querySelector(".mapBig");
+      beachPic.className = "mapBig blur fitScreen";
       setWinnerModal(
         <div className="winnerModal">
           <div className="winnerTime">
@@ -223,7 +286,9 @@ function Beach(props) {
         </div>
       );
     }
+
   }, [odlawFound, waldoFound, whitebeardFound, setTimerOn, time]);
+
 
   const addScore = (e) => {
     e.preventDefault();
@@ -245,9 +310,9 @@ function Beach(props) {
   };
 
   return (
-    <div className="beachContainer">
-      <div>{winnerModal}</div>
-      <div className={"beachBig blur"} onClick={popUpScreen}>
+    <div className="mapContainer">
+      <div className="winnerModalContainer">{winnerModal}</div>
+      <div className={"mapBig blur"} onClick={popUpScreen}>
         {popupText}
         {circle}
         <img src={beach} alt="Beach"></img>

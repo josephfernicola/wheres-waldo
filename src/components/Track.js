@@ -8,7 +8,7 @@ import {
 } from "firebase/firestore";
 
 function Track (props) {
-  const { time, setTime, timerOn, setTimerOn, allowPopup, setAllowPopup } = props;
+  const { time, setTime, timerOn, setTimerOn, allowPopup, setAllowPopup, setStartButtonAndNotificationText, startButtonAndNotificationText } = props;
   const [popup, setPopup] = useState(true);
   const [popupText, setPopupText] = useState("");
   const [circle, setCircle] = useState("");
@@ -35,7 +35,14 @@ function Track (props) {
           document.querySelector(".waldoImageAndName").firstChild;
         waldoImg.className = "greyOut";
         setWaldoFound(true);
-      } 
+        setStartButtonAndNotificationText(
+          <div className="correctGuess">Found Waldo!</div>
+        );
+      }  else {
+        setStartButtonAndNotificationText(
+          <div className="wrongGuess">Try Again!</div>
+        );
+      }
     }
   }, [validateWaldo]);
 
@@ -52,7 +59,14 @@ function Track (props) {
           document.querySelector(".odlawImageAndName").firstChild;
         odlawImg.className = "greyOut";
         setOdlawFound(true);
-      } 
+        setStartButtonAndNotificationText(
+          <div className="correctGuess">Found Odlaw!</div>
+        );
+      } else {
+        setStartButtonAndNotificationText(
+          <div className="wrongGuess">Try Again</div>
+        );
+      }
     }
   }, [validateOdlaw]);
 
@@ -70,6 +84,13 @@ function Track (props) {
         ).firstChild;
         whitebeardImg.className = "greyOut";
         setWhitebeardFound(true);
+        setStartButtonAndNotificationText(
+          <div className="correctGuess">Found Whitebeard!</div>
+        );
+      } else {
+        setStartButtonAndNotificationText(
+          <div className="wrongGuess">Try Again!</div>
+        );
       }
     }
   }, [validateWhitebeard]);
@@ -196,8 +217,9 @@ function Track (props) {
     if (odlawFound && waldoFound && whitebeardFound) {
       setTimerOn(false);
       setAllowPopup(false);
-      const spacePic = document.querySelector(".trackBig");
-      spacePic.className = "trackBig blur fitScreen";
+      setStartButtonAndNotificationText("");
+      const spacePic = document.querySelector(".mapBig");
+      spacePic.className = "mapBig blur fitScreen";
       setWinnerModal(
         <div className="winnerModal">
           <div className="winnerTime">
@@ -243,13 +265,11 @@ function Track (props) {
     navigate("/leaderboards");
   }
   };
-  const refreshPage = () => {
-    navigate(0);
-  };
+ 
   return (
-    <div className="trackContainer">
+    <div className="mapContainer">
     <div>{winnerModal}</div>
-    <div className={"trackBig blur"} onClick={popUpScreen}>
+    <div className={"mapBig blur"} onClick={popUpScreen}>
       {popupText}
       {circle}
       <img src={track} alt="Track"></img>
