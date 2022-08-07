@@ -31,14 +31,6 @@ nav {
   padding: 0;
 }
 
-/* .hiddenNavBar {
-  visibility: hidden;
-  width: 0px;
-  height: 0px;
-  margin: 0;
-  padding: 0;
-} */
-
 .beachSmall > img,
 .snowSmall > img,
 .spaceSmall > img,
@@ -148,44 +140,11 @@ nav {
   transition: all 300ms ease-out;
 }
 
-/* .correctNotification,
-.wrongNotification {
-  position: fixed;
-  left: 40rem;
-  top: 10rem;
-  width: 8rem;
-  height: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 4;
-} */
-/* .correctNotification {
-  color: rgb(65, 206, 60);
-  border: 2px solid rgb(65, 206, 60);
-  background-color: rgb(109, 109, 109);
-  font-weight: 700;
-}
-
-.wrongNotification {
-  color: rgb(204, 40, 40);
-  border: 2px solid rgb(204, 40, 40);
-  background-color: rgb(180, 175, 175);
-  font-weight: 700;
-} */
 
 .greyOut {
   filter: grayscale(100%);
 }
-/* .introText {
 
-position: absolute;
-top: 15rem;
-left: 31rem;
-  z-index: 4;
-  font-weight: 600;
-  font-size: 2rem;
-} */
 
 .introAndButton {
   z-index: 4;
@@ -197,12 +156,7 @@ left: 31rem;
   margin-top: 7rem;
   text-align: center;
 }
-/* .startTimerButton {
-  position: absolute;
-  top: 20rem;
-  left: 41rem;
-  z-index: 4;
-} */
+
 
 .winnerModal {
   z-index: 4;
@@ -228,7 +182,9 @@ left: 31rem;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   width: 13rem;
 }
-
+.submitScoreButton {
+  font-weight: 400;
+}
 .returnHome,
 .startTimerButton,
 .submitScoreButton,
