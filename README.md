@@ -1,4 +1,8 @@
-Where's Waldo App created using React.
+- Developed Where’s Waldo application that includes four different maps to find all three characters
+
+- Utilized Firebase for backend to store and display the user scores and names for each map
+
+Live Demo: https://josephfernicola.github.io/wheres-waldo/
 
 Images from:
 
