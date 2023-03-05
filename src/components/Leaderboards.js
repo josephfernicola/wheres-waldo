@@ -32,9 +32,7 @@ function Leaderboards() {
           setCurrentDisplayScores(scores);
         })
         .catch((err) => {
-          setError(
-            <div>{err.message} Unable to currently display scores.</div>
-          );
+          setError(<div>{err.message} Unable to display scores.</div>);
         });
 
       currentDisplayScores.map((arr) => {
@@ -58,9 +56,7 @@ function Leaderboards() {
           setCurrentDisplayScores(scores);
         })
         .catch((err) => {
-          setError(
-            <div>{err.message} Unable to currently display scores.</div>
-          );
+          setError(<div>{err.message} Unable to display scores.</div>);
         });
 
       currentDisplayScores.map((arr) => {
@@ -84,9 +80,7 @@ function Leaderboards() {
           setCurrentDisplayScores(scores);
         })
         .catch((err) => {
-          setError(
-            <div>{err.message} Unable to currently display scores.</div>
-          );
+          setError(<div>{err.message} Unable to display scores.</div>);
         });
 
       currentDisplayScores.map((arr) => {
@@ -110,9 +104,7 @@ function Leaderboards() {
           setCurrentDisplayScores(scores);
         })
         .catch((err) => {
-          setError(
-            <div>{err.message} Unable to currently display scores.</div>
-          );
+          setError(<div>{err.message} Unable to display scores.</div>);
         });
 
       currentDisplayScores.map((arr) => {
