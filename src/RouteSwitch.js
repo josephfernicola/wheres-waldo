@@ -25,8 +25,6 @@ const RouteSwitch = () => {
   const [startButtonAndNotificationText, setStartButtonAndNotificationText] =
     useState(<button className="startTimerButton" onClick={unBlurImage}>Start!</button>);
 
-
-
   return (
     <BrowserRouter>
       <NavBar

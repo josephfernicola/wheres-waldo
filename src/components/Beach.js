@@ -34,17 +34,6 @@ function Beach(props) {
     mapContainer.children[1].className = "mapBig"; //remove the blur
   };
 
-  // let timer;
-
-  // const runTimer = () => {
-  //   timer = setTimeout(() => {
-  //     setStartButtonAndNotificationText("");
-  //   }, 8000);
-  // };
-  // useEffect(() => {
-  //   runTimer();
-  // }, []);
-
   useEffect(() => {
     setStartButtonAndNotificationText(
       <button className="startTimerButton" onClick={unBlurImage}>
@@ -329,3 +318,5 @@ function Beach(props) {
 }
 
 export default Beach;
+
+

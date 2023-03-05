@@ -187,7 +187,7 @@ function Leaderboards() {
           <img
             src={beach}
             alt="Beach"
-            className={beachDisplay ? "shadow" : "hidden"}
+            className={beachDisplay ? "shadow" : "no-shadow"}
           ></img>
           <div className="level">Level 1</div>
         </li>
@@ -195,7 +195,7 @@ function Leaderboards() {
           <img
             src={snow}
             alt="Snow"
-            className={snowDisplay ? "shadow" : "hidden"}
+            className={snowDisplay ? "shadow" : "no-shadow"}
           ></img>
           <div className="level">Level 2</div>
         </li>
@@ -203,7 +203,7 @@ function Leaderboards() {
           <img
             src={space}
             alt="Space"
-            className={spaceDisplay ? "shadow" : "hidden"}
+            className={spaceDisplay ? "shadow" : "no-shadow"}
           ></img>
           <div className="level">Level 3</div>
         </li>
@@ -212,7 +212,7 @@ function Leaderboards() {
           <img
             src={track}
             alt="Track"
-            className={trackDisplay ? "shadow" : "hidden"}
+            className={trackDisplay ? "shadow" : "no-shadow"}
           ></img>
           <div className="level">Level 4</div>
         </li>
