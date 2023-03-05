@@ -15,6 +15,7 @@ function Leaderboards() {
   const [spaceDisplay, setSpaceDisplay] = useState(false);
   const [snowDisplay, setSnowDisplay] = useState(false);
   const [trackDisplay, setTrackDisplay] = useState(false);
+  const [error, setError] = useState("");
 
   const allScores = getFirestore();
 
@@ -31,20 +32,21 @@ function Leaderboards() {
           setCurrentDisplayScores(scores);
         })
         .catch((err) => {
-          console.log(err.message);
-        });
-      
-        currentDisplayScores.map((arr) => {
-          return (
-            <div key={arr.id}>
-              <div className="nameAndTime">
-                <div>{arr.name}</div>
-                <div>{arr.time}</div>
-              </div>
-            </div>
+          setError(
+            <div>{err.message} Unable to currently display scores.</div>
           );
         });
-      
+
+      currentDisplayScores.map((arr) => {
+        return (
+          <div key={arr.id}>
+            <div className="nameAndTime">
+              <div>{arr.name}</div>
+              <div>{arr.time}</div>
+            </div>
+          </div>
+        );
+      });
     } else if (snowScores) {
       const snowScoreRef = collection(allScores, "snowScores");
       getDocs(snowScoreRef)
@@ -56,20 +58,21 @@ function Leaderboards() {
           setCurrentDisplayScores(scores);
         })
         .catch((err) => {
-          console.log(err.message);
-        });
-      
-        currentDisplayScores.map((arr) => {
-          return (
-            <div key={arr.id}>
-              <div className="nameAndTime">
-                <div>{arr.name}</div>
-                <div>{arr.time}</div>
-              </div>
-            </div>
+          setError(
+            <div>{err.message} Unable to currently display scores.</div>
           );
         });
-      
+
+      currentDisplayScores.map((arr) => {
+        return (
+          <div key={arr.id}>
+            <div className="nameAndTime">
+              <div>{arr.name}</div>
+              <div>{arr.time}</div>
+            </div>
+          </div>
+        );
+      });
     } else if (spaceScores) {
       const spaceScoreRef = collection(allScores, "spaceScores");
       getDocs(spaceScoreRef)
@@ -81,20 +84,21 @@ function Leaderboards() {
           setCurrentDisplayScores(scores);
         })
         .catch((err) => {
-          console.log(err.message);
-        });
-      
-        currentDisplayScores.map((arr) => {
-          return (
-            <div key={arr.id}>
-              <div className="nameAndTime">
-                <div>{arr.name}</div>
-                <div>{arr.time}</div>
-              </div>
-            </div>
+          setError(
+            <div>{err.message} Unable to currently display scores.</div>
           );
         });
-      
+
+      currentDisplayScores.map((arr) => {
+        return (
+          <div key={arr.id}>
+            <div className="nameAndTime">
+              <div>{arr.name}</div>
+              <div>{arr.time}</div>
+            </div>
+          </div>
+        );
+      });
     } else if (trackScores) {
       const trackScoreRef = collection(allScores, "trackScores");
       getDocs(trackScoreRef)
@@ -106,22 +110,30 @@ function Leaderboards() {
           setCurrentDisplayScores(scores);
         })
         .catch((err) => {
-          console.log(err.message);
-        });
-      
-        currentDisplayScores.map((arr) => {
-          return (
-            <div key={arr.id}>
-              <div className="nameAndTime">
-                <div>{arr.name}</div>
-                <div>{arr.time}</div>
-              </div>
-            </div>
+          setError(
+            <div>{err.message} Unable to currently display scores.</div>
           );
         });
-      
+
+      currentDisplayScores.map((arr) => {
+        return (
+          <div key={arr.id}>
+            <div className="nameAndTime">
+              <div>{arr.name}</div>
+              <div>{arr.time}</div>
+            </div>
+          </div>
+        );
+      });
     }
-  }, [beachScores, spaceScores, snowScores, trackScores, allScores, currentDisplayScores]);
+  }, [
+    beachScores,
+    spaceScores,
+    snowScores,
+    trackScores,
+    allScores,
+    currentDisplayScores,
+  ]);
 
   //alternate between true and false to change display page
   const changeBoardDisplayToBeach = (e) => {
@@ -232,6 +244,7 @@ function Leaderboards() {
             </div>
           );
         })}
+        {error}
       </div>
     </div>
   );
